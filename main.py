@@ -14,4 +14,3 @@ if __name__ == "__main__":
 
     for texts, terms in script:
         mr.parse(texts, terms)
-        break

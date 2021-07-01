@@ -46,5 +46,4 @@ def load_glossary(filename):
 
     fo.close()
 
-    print(glossary)
     return glossary
