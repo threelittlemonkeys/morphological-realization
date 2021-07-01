@@ -1,0 +1,24 @@
+ru Я продаю {0:acc}.
+0 축복받은 목걸이
+
+en I want to buy {0}.
+ko 나는 {0}{_을} 사고 싶습니다.
+ru Я продаю {0:acc}.
+0 blessed necklace
+
+ko 나는 {0}{_을} 사고 싶습니다.
+en I want to buy {0}.
+ru Я продаю {0:acc}.
+0 축복받은 목걸이
+
+ko 나는 {0}들{_을} 사고 싶습니다.
+en I want to buy {0}.
+ru Я продаю {0:acc:pl}.
+0 축복받은 목걸이
+
+ko 나는 {0}{_와} {1}{_을} 사고 싶습니다.
+en I want to buy {0} and {1}.
+ru Я продаю {0:acc} и {1:acc}.
+0 축복받은 목걸이
+1 축복받은 목걸이
+
