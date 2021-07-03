@@ -13,4 +13,4 @@ if __name__ == "__main__":
     script = mr.read(sys.argv[3])
 
     for texts, terms in script:
-        mr.parse(texts, terms)
+        mr.run(texts, terms)

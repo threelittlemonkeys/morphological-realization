@@ -1,65 +1,85 @@
+from .constants import *
+from . import logger
+
 def load_lexicon(filename):
-
     lexicon = dict()
-
     fo = open(filename)
 
     for ln, line in enumerate(fo, 1):
-        lemma, fs, *word = line.strip().split(" ")
+        if line == "\n":
+            continue
+
+        lemma, feats, *word = line.strip().split(" ")
+        feats = tuple(feats.split(":"))
 
         if lemma not in lexicon:
-            lexicon[lemma] = [None, {}]
-
-        fs = tuple(fs.split(":"))
+            lexicon[lemma] = [None if word else feats, {}]
 
         if word: # surface form
-            lexicon[lemma][1][fs] = word[0]
-        else: # lemma
-            lexicon[lemma][0] = fs
+            lexicon[lemma][1][feats] = word[0]
 
     fo.close()
-
     return lexicon
 
-def avmize(avm, fs):
+class avm(): # attribute value matrix
 
-    if not avm:
-        avm = { # attribute value matrix
-            "pos": None, # part of speech
-            "gend": None, # gender
-            "num": None, # number
-            "case": None,
-            "anim": None, # animacy
-        }
+    def __init__(self, feats):
+        self.pos = None # part of speech
+        self.gend = None # gender
+        self.num = None # number
+        self.case = None
+        self.anim = None # animacy
 
-    for f in fs:
-        # part of speech
-        if f in ("adj", "noun"):
-            avm["pos"] = f
-        elif f in ("m", "f", "n"):
-            avm["gend"] = f
-        elif f in ("sg", "pl"):
-            avm["num"] = f
-        elif f in ("nom", "acc"):
-            avm["case"] = f
+        self.set(feats)
 
-    return avm
+    def set(self, feats):
 
-def parse_fs(lemma, fs, lexicon):
+        if not feats:
+            return
 
-    if type(fs) == list:
-        fs = avmize(None, fs)
+        if type(feats) == avm:
+            for x in feats.__dict__.items():
+                setattr(self, *x)
+            return
 
+        for f in feats:
+            if f in ("adj", "noun"):
+                self.pos = f
+            elif f in ("m", "f", "n"):
+                self.gend = f
+            elif f in ("sg", "pl"):
+                self.num = f
+            elif f in ("nom", "acc"):
+                self.case = f
+            elif f == "anim":
+                self.anim = True
+            elif f != "":
+                logger.err(ERR_UNKNOWN_FEATURE, f)
+
+def realize(lemma, feats, lexicon):
+
+    if lemma not in lexicon:
+        return lemma, None
+
+    fs = avm(feats)
     cat, words = lexicon[lemma]
-    fs = avmize(fs, cat)
+    fs.set(cat)
 
-    if fs["pos"] in ("adj", "noun") and not fs["num"]:
-        fs["num"] = "sg"
+    if not fs.gend: fs.gend = "m"
+    if not fs.num: fs.num = "sg"
+    if not fs.case: fs.case = "nom"
 
-    if fs["pos"] == "adj":
-        word = lexicon[lemma][1][(fs["gend"], fs["num"], fs["case"])]
+    word = None
 
-    if fs["pos"] == "noun":
-        word = lexicon[lemma][1][(fs["num"], fs["case"])]
+    if fs.pos == "adj":
+        feats = (fs.gend, fs.num, fs.case)
+        _feats = feats + ("anim",)
+        if fs.anim and _feats in words:
+            word = words[_feats]
+        if not word:
+            word = words[feats]
+
+    if fs.pos == "noun":
+        word = lexicon[lemma][1][(fs.num, fs.case)]
 
     return word, fs

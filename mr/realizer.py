@@ -7,6 +7,7 @@ from .glossary import *
 from .script import *
 
 class realizer():
+
     def __init__(self, lexicon, glossary):
         self.lexicon = load_lexicon(lexicon)
         self.glossary = load_glossary(glossary)
@@ -14,35 +15,42 @@ class realizer():
     def read(self, script):
         return load_script(script)
 
-    def realize(self, idx, term, fs):
+    def parse(self, idx, term, feats):
 
         if len(term[idx]) == 2:
             head, lemma = term[idx]
 
-            if head not in (-1, "*"):
-                self.realize(head, term, fs)
+            if head not in (-1, "*"): # if head exists
+                self.parse(head, term, feats)
+                feats = term[head][3]
 
-            if lemma in self.lexicon:
-                if head not in (-1, "*"):
-                    fs = term[head][2].copy()
-                term[idx] = (head, *parse_fs(lemma, fs, self.lexicon))
-            else:
-                term[idx] = (head, lemma, None)
+            term[idx] += realize(lemma, feats, self.lexicon)
 
         if idx < len(term) - 1:
-            self.realize(idx + 1, term, fs)
+            self.parse(idx + 1, term, feats)
 
-    def parse(self, texts, terms):
+    def run(self, texts, terms):
+        out = []
         for lang, text in texts:
+            k = 0
 
+            print(text)
             for m in re.finditer(RE_SCRIPT_TOKEN_A, text):
-                idx, head, fs, _ = m.groups()
+                idx, head, feats, _ = m.groups()
+                i, j = m.start(), m.end()
                 idx = int(idx)
                 head = head[1:] if head else None
                 term = self.glossary[terms[idx]][lang].copy()
-                fs = fs[1:].split(":")
-                self.realize(idx, term, fs)
-                print(term)
+                feats = feats[1:].split(":")
+
+                self.parse(0, term, feats)
+                term = " ".join(x[2] for x in term)
+                text = text[:i + k] + term + text[j + k:]
+                k += len(term) - (j - i)
 
             for m in re.finditer(RE_SCRIPT_TOKEN_B, text):
                 lemma = m.group(1)
+
+            out.append(text)
+        print("\n".join(out))
+        return out

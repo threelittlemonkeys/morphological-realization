@@ -3,6 +3,9 @@ import sys
 
 LOGGER_STREAM = sys.stderr
 
+ERR_INVALID_SYNTAX = "invalid syntax at %s %d"
+ERR_UNKNOWN_FEATURE = "unknown feature '%s'"
+
 LANGS = {"de", "en", "es", "fr", "ko", "ru"}
 
 RE_GLOSSARY_TOKEN = re.compile("^\{([0-9]*):([0-9]+|\*)_([^}]+)\}$")

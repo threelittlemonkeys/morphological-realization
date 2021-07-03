@@ -6,6 +6,6 @@ def log(*args):
         return
     print(*args, file = LOGGER_STREAM)
 
-def error(filename, ln):
-    log("Error: invalid syntax at %s %d" % (filename, ln))
+def err(err_id, *args):
+    log("Error:", err_id % args)
     sys.exit()
