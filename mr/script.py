@@ -1,5 +1,5 @@
-from .constants import LANGS
-from . import logger
+from .logger import *
+from .constants import *
 
 def load_script(filename):
 
