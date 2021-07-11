@@ -1,8 +1,6 @@
-en I want to buy {0}.
-ru Я продаю {0:acc}.
+en I want to buy {0} and {1:pl}.
+ko 나는 {0}{_와} {1}들{_을} 사고 싶습니다.
+ru Я продаю {0:acc} и {1:pl:acc}.
 0 blessed necklace
+1 blessed necklace
 
-en I want to buy {0:pl}.
-ko 나는 {0}들{_을} 사고 싶습니다.
-ru Я продаю {0:acc:pl}.
-0 blessed necklace

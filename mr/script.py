@@ -1,4 +1,4 @@
-from .logger import *
+from . import logger
 from .constants import *
 
 def load_script(filename):

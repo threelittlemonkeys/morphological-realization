@@ -1,11 +1,12 @@
 import sys
 import re
-from .logger import *
+from . import logger
 from .constants import *
 from .lexicon import *
 from .glossary import *
 from .grammar import *
 from .script import *
+from .utils import *
 
 class parser():
 
@@ -30,51 +31,57 @@ class parser():
         if idx < len(phrase) - 1:
             self.parse_term(idx + 1, phrase, feats)
 
-    def parse_phrase(self, idx, sent):
-        phrase = sent[idx]
+    def parse_phrase(self, idx, tree):
+        phrase = tree[idx]
 
         if type(phrase.feats) != avm:
             if phrase.head >= 0:
-                self.parse_phrase(phrase.head, sent)
-                feats.set(sent[phrase.head].feats)
-            phrase.form = [node(*x) for x in phrase.form]
+                self.parse_phrase(phrase.head, tree)
+                feats.set(tree[phrase.head].feats)
+            phrase.form = [node(i, *x) for i, x in enumerate(phrase.form)]
             self.parse_term(0, phrase.form, phrase.feats)
 
-        if idx < len(sent) - 1:
-            self.parse_phrase(idx + 1, sent)
+        if idx < len(tree) - 1:
+            self.parse_phrase(idx + 1, tree)
 
     def parse(self, texts, terms):
-        out = list()
-        for lang, text in texts:
+        for lang, src in texts:
 
-            sent = list()
-            for m in re.finditer(RE_PHRASE, text):
+            tree = list()
+            for i, m in enumerate(re.finditer(RE_PHRASE, src)):
                 idx, head, feats, _ = m.groups()
                 idx = int(idx)
                 head = int(head[1:]) if head else -1
                 lemma = self.glossary[terms[idx]][lang]
-                feats = feats[1:].split(":")
-                sent.append(node(head, lemma, feats, m.span()))
-            self.parse_phrase(0, sent)
+                feats = feats[1:].split(":") if feats else None
+                tree.append(node(i, head, lemma, feats, m.span()))
+            self.parse_phrase(0, tree)
 
-            for phrase in sent:
-                term = " ".join(term.form for term in phrase.form)
-                print(term)
+            tgt = src
 
-            print(text)
-            for x in sent:
-                print(x)
-
-            '''
             k = 0
-                self.parse(0, term, feats)
-                term = " ".join(x[2] for x in term)
-                text = text[:i + k] + term + text[j + k:]
+            for phrase in tree:
+                i, j = phrase.span
+                term = " ".join(x.form for x in phrase.form)
+                tgt = tgt[:i + k] + term + tgt[j + k:]
                 k += len(term) - (j - i)
 
-            for m in re.finditer(RE_WORD, text):
-                lemma = m.group(1)
+            k = 0
+            for m in re.finditer(RE_WORD, tgt):
+                i, j = m.start() + k, m.end() + k
+                word = m.group(1)
+                if i > 0 and word in "와을":
+                    word = realize_ko_morpheme(tgt[i - 1], word)
+                tgt = tgt[:i] + word + tgt[j:]
+                k += len(word) - (j - i)
 
-            out.append(text)
-            '''
-        return out
+            logger.log("src =", src)
+            logger.log("tgt =", tgt)
+            logger.log("lang =", lang)
+            for i, term in enumerate(terms):
+                logger.log("term[%d] =" % i, " ".join(term))
+            logger.log("tree =")
+            for i, phrase in enumerate(tree):
+                logger.log(phrase)
+
+            logger.log()

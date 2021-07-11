@@ -1,16 +1,25 @@
-from .logger import *
+from . import logger
 from .constants import *
 
 class node():
-    def __init__(self, head, form, feats = None, span = None):
+    def __init__(self, idx, head, form, feats = None, span = None):
+        self.idx = idx
         self.head = head
+        self.span = span
         self.form = form
         self.feats = feats
-        self.span = span
 
     def __repr__(self):
-        pairs = ("%s: %s" % x for x in self.__dict__.items())
-        return "{%s}" % ", ".join(pairs)
+        out = "node[%d] = {head: %s, " % (self.idx, self.head)
+        if self.span:
+            out += "span: %s, " % (self.span,)
+        if type(self.form) == str:
+            out += "form: %s, " % self.form
+        out += "feats: %s}" % (self.feats if self.feats else "{}")
+        if type(self.form) == list:
+            for i, form in enumerate(self.form):
+                out += "\n  %s" % form
+        return out
 
 class avm(): # attribute value matrix
 
@@ -24,7 +33,7 @@ class avm(): # attribute value matrix
         self.set(feats)
 
     def __repr__(self):
-        pairs = ("%s: %s" % x for x in self.__dict__.items())
+        pairs = ("%s: %s" % x for x in self.__dict__.items() if x[1])
         return "{%s}" % ", ".join(pairs)
 
     def set(self, feats):
