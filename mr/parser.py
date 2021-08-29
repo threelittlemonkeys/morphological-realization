@@ -1,4 +1,3 @@
-import sys
 import re
 from . import logger
 from .constants import *
@@ -35,9 +34,11 @@ class parser():
         phrase = tree[idx]
 
         if type(phrase.feats) != avm:
+
             if phrase.head >= 0:
                 self.parse_phrase(phrase.head, tree)
                 feats.set(tree[phrase.head].feats)
+
             phrase.form = [node(i, *x) for i, x in enumerate(phrase.form)]
             self.parse_term(0, phrase.form, phrase.feats)
 
@@ -46,18 +47,21 @@ class parser():
 
     def parse(self, texts, terms):
         for lang, src in texts:
+            tgt = src
+
+            # parse phrases
 
             tree = list()
             for i, m in enumerate(re.finditer(RE_PHRASE, src)):
                 idx, head, feats, _ = m.groups()
                 idx = int(idx)
                 head = int(head[1:]) if head else -1
-                lemma = self.glossary[terms[idx]][lang]
+                lemma = self.glossary[terms[idx]][lang][1]
                 feats = feats[1:].split(":") if feats else None
                 tree.append(node(i, head, lemma, feats, m.span()))
             self.parse_phrase(0, tree)
 
-            tgt = src
+            # phrase realization
 
             k = 0
             for phrase in tree:
@@ -66,11 +70,13 @@ class parser():
                 tgt = tgt[:i + k] + term + tgt[j + k:]
                 k += len(term) - (j - i)
 
+            # function word realization
+
             k = 0
             for m in re.finditer(RE_WORD, tgt):
                 i, j = m.start() + k, m.end() + k
                 word = m.group(1)
-                if i > 0 and word in "와을":
+                if i > 0 and word in ("와", "을"):
                     word = realize_ko_morpheme(tgt[i - 1], word)
                 tgt = tgt[:i] + word + tgt[j:]
                 k += len(word) - (j - i)
@@ -79,7 +85,8 @@ class parser():
             logger.log("tgt =", tgt)
             logger.log("lang =", lang)
             for i, term in enumerate(terms):
-                logger.log("term[%d] =" % i, " ".join(term))
+                term = self.glossary[term][lang][0]
+                logger.log("term[%d] =" % i, term)
             logger.log("tree =")
             for i, phrase in enumerate(tree):
                 logger.log(phrase)

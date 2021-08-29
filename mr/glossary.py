@@ -12,8 +12,8 @@ def load_glossary(filename):
 
         if line == "\n":
             terms = {
-                lang: tuple((heads[head], lemma) for head, lemma in term)
-                for lang, term in terms
+                lang: (line, tuple((heads[head], lemma) for head, lemma in term))
+                for lang, line, term in terms
             }
             for key in keys:
                 glossary[key] = terms
@@ -40,7 +40,7 @@ def load_glossary(filename):
                 heads[_idx] = idx
 
         keys.append(tuple(key))
-        terms.append((lang, term))
+        terms.append((lang, line, term))
 
     fo.close()
     return glossary

@@ -1,6 +1,7 @@
+en I want to buy {0} and {1:sg}.
 en I want to buy {0} and {1:pl}.
 ko 나는 {0}{_와} {1}들{_을} 사고 싶습니다.
-ru Я продаю {0:acc} и {1:pl:acc}.
-0 blessed necklace
+ru Я продаю {0:sg:acc} и {1:pl:acc}.
+0 환상의 쉬르노엔 가죽 각반
 1 blessed necklace
 
