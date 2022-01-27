@@ -1,8 +1,10 @@
 def load_lexicon(filename):
-    lexicon = dict()
-    fo = open(filename)
 
-    for ln, line in enumerate(fo, 1):
+    fo = open(filename)
+    lexicon = dict()
+
+    for line in fo:
+
         if line == "\n":
             continue
 

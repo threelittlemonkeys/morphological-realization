@@ -3,34 +3,31 @@ from .constants import *
 
 def load_script(filename):
 
-    fo = open(filename)
-    texts = []
-    terms = []
+    with open(filename) as fo:
+        data = fo.read().strip().split("\n\n")
 
-    for ln, line in enumerate(fo, 1):
+    for block in data:
 
-        if line == "\n":
-            yield texts, terms
-            texts.clear()
-            terms.clear()
-            continue
+        texts = []
+        terms = []
+        block = block.split("\n")
 
-        line = line.strip()
-        tag, text = line.split(" ", 1)
+        for line in block:
 
-        # text
-        if tag in LANGS:
-            texts.append((tag, text))
-            continue
+            line = line.strip()
+            tag, text = line.split(" ", 1)
 
-        # term
-        if tag.isnumeric():
-            tag = int(tag)
-            if tag == len(terms):
-                key = tuple(text.split(" "))
-                terms.append(key)
+            # text
+            if tag in LANGS:
+                texts.append((tag, text))
                 continue
 
-        logger.error(filename, ln)
+            # term
+            if tag.isnumeric():
+                tag = int(tag)
+                if tag == len(terms):
+                    key = tuple(text.split(" "))
+                    terms.append(key)
+                    continue
 
-    fo.close()
+        yield texts, terms
