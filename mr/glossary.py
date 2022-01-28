@@ -3,46 +3,48 @@ from .constants import *
 
 def load_glossary(filename):
 
-    with open(filename) as fo:
-        data = fo.read().strip().split("\n\n")
+    fo = open(filename)
 
+    keys = list()
+    terms = list()
     glossary = dict()
 
-    for block in data:
+    for ln, line in enumerate(fo, 1):
 
-        keys = list()
-        terms = list()
-        block = block.split("\n")
+        if line == "\n":
 
-        for line in block:
+            terms = {
+                lang: (line, tuple((heads[head], lemma) for head, lemma in term))
+                for lang, line, term, heads in terms
+            }
+    
+            for key in keys:
+                glossary[key] = terms
 
-            key = list()
-            term = list()
-            heads = {None: -1, "*": "*"}
-            lang, line = line.strip().split(" ", 1)
+            keys = list()
+            terms = list()
+            continue
 
-            for idx, token in enumerate(line.split(" ")):
+        key = list()
+        term = list()
+        heads = {None: -1, "*": "*"}
+        lang, line = line.strip().split(" ", 1)
 
-                m = RE_TERM.search(token)
-                if m:
-                    _idx, head, lemma = m.groups()
-                else:
-                    _idx, head, lemma = None, None, token
+        for idx, token in enumerate(line.split(" ")):
 
-                key.append(lemma)
-                term.append((head, lemma))
-                if _idx: # if head
-                    heads[_idx] = idx
+            m = RE_TERM_NODE.search(token)
+            if m:
+                _idx, head, lemma = m.groups()
+            else:
+                _idx, head, lemma = None, None, token
 
-            keys.append(tuple(key))
-            terms.append((lang, line, term))
+            key.append(lemma)
+            term.append((head, lemma))
+            if _idx: # if head
+                heads[_idx] = idx
 
-        terms = {
-            lang: (line, tuple((heads[head], lemma) for head, lemma in term))
-            for lang, line, term in terms
-        }
+        keys.append(tuple(key))
+        terms.append((lang, line, term, heads))
 
-        for key in keys:
-            glossary[key] = terms
-
+    fo.close()
     return glossary

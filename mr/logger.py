@@ -6,6 +6,6 @@ def log(*args):
         return
     print(*args, file = LOGGER_STREAM)
 
-def error(error_id, *args):
+def err(error_id, *args):
     log("Error:", error_id % args)
     sys.exit()

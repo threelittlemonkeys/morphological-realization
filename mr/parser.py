@@ -16,57 +16,57 @@ class parser():
     def read(self, script):
         return load_script(script)
 
-    def parse_term(self, idx, phrase, feats):
-        term = phrase[idx]
+    def parse_node(self, idx, tree, feats):
+        e = tree[idx]
 
-        if not term.feats:
+        if not e.feats:
 
-            if term.head not in (-1, "*"): # if head exists
-                self.parse_term(term.head, phrase, feats)
-                feats = phrase[term.head].feats
+            if e.head not in (-1, "*"): # if head exists
+                self.parse_node(e.head, tree, feats)
+                feats = tree[e.head].feats
 
-            term.form, term.feats = realize(term.form, feats, self.lexicon)
-
-        if idx < len(phrase) - 1:
-            self.parse_term(idx + 1, phrase, feats)
-
-    def parse_phrase(self, idx, tree):
-        phrase = tree[idx]
-
-        if type(phrase.feats) != avm:
-
-            if phrase.head >= 0:
-                self.parse_phrase(phrase.head, tree)
-                feats.set(tree[phrase.head].feats)
-
-            phrase.form = [node(i, *x) for i, x in enumerate(phrase.form)]
-            self.parse_term(0, phrase.form, phrase.feats)
+            e.form, e.feats = realize(e.form, feats, self.lexicon)
 
         if idx < len(tree) - 1:
-            self.parse_phrase(idx + 1, tree)
+            self.parse_node(idx + 1, tree, feats)
+
+    def parse_term(self, idx, tree):
+        e = tree[idx]
+
+        if type(e.feats) != avm:
+
+            if e.head >= 0:
+                self.parse_node(e.head, tree)
+                feats.add(tree[e.head].feats)
+
+            e.form = [node(i, *x) for i, x in enumerate(e.form)]
+            self.parse_node(0, e.form, e.feats)
+
+        if idx < len(tree) - 1:
+            self.parse_term(idx + 1, tree)
 
     def parse(self, texts, terms):
         for lang, src in texts:
             tgt = src
 
-            # parse phrases
+            # term parsing
 
             tree = list()
-            for i, m in enumerate(re.finditer(RE_PHRASE, src)):
-                idx, head, feats, _ = m.groups()
+            for i, m in enumerate(re.finditer(RE_TERM, src)):
+                idx, head, feats = m.groups()
                 idx = int(idx)
                 head = int(head[1:]) if head else -1
                 lemma = self.glossary[terms[idx]][lang][1]
                 feats = feats[1:].split(":") if feats else None
                 tree.append(node(i, head, lemma, feats, m.span()))
-            self.parse_phrase(0, tree)
+            self.parse_term(0, tree)
 
-            # phrase realization
+            # term realization
 
             k = 0
-            for phrase in tree:
-                i, j = phrase.span
-                term = " ".join(x.form for x in phrase.form)
+            for e in tree:
+                i, j = e.span
+                term = " ".join(x.form for x in e.form)
                 tgt = tgt[:i + k] + term + tgt[j + k:]
                 k += len(term) - (j - i)
 
@@ -81,14 +81,19 @@ class parser():
                 tgt = tgt[:i] + word + tgt[j:]
                 k += len(word) - (j - i)
 
+            # results
+
             logger.log("src =", src)
             logger.log("tgt =", tgt)
             logger.log("lang =", lang)
             for i, term in enumerate(terms):
-                term = self.glossary[term][lang][0]
-                logger.log("term[%d] =" % i, term)
+                try:
+                    term = self.glossary[term][lang][0]
+                    logger.log("term[%d] =" % i, term)
+                except:
+                    pass
             logger.log("tree =")
-            for i, phrase in enumerate(tree):
-                logger.log(phrase)
+            for e in tree:
+                logger.log(e)
 
             logger.log()

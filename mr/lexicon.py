@@ -3,7 +3,7 @@ def load_lexicon(filename):
     fo = open(filename)
     lexicon = dict()
 
-    for line in fo:
+    for ln, line in enumerate(fo, 1):
 
         if line == "\n":
             continue

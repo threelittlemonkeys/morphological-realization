@@ -3,31 +3,35 @@ from .constants import *
 
 def load_script(filename):
 
-    with open(filename) as fo:
-        data = fo.read().strip().split("\n\n")
+    fo = open(filename)
+    texts = list()
+    terms = list()
 
-    for block in data:
+    for ln, line in enumerate(fo, 1):
 
-        texts = []
-        terms = []
-        block = block.split("\n")
+        if line == "\n":
+            yield texts, terms
+            texts.clear()
+            terms.clear()
+            continue
 
-        for line in block:
+        line = line.strip()
+        tag, text = line.split(" ", 1)
 
-            line = line.strip()
-            tag, text = line.split(" ", 1)
-
-            # text
-            if tag in LANGS:
-                texts.append((tag, text))
+        # term
+        if tag.isnumeric():
+            tag = int(tag)
+            if tag == len(terms):
+                key = tuple(text.split(" "))
+                terms.append(key)
                 continue
 
-            # term
-            if tag.isnumeric():
-                tag = int(tag)
-                if tag == len(terms):
-                    key = tuple(text.split(" "))
-                    terms.append(key)
-                    continue
+        # text
+        if tag in LANGS:
+            texts.append((tag, text))
+            continue
 
-        yield texts, terms
+        logger.err(ERR_INVALID_SYNTAX % (filename, ln))
+        sys.exit()
+
+    fo.close()

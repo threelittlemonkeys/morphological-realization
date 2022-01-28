@@ -21,7 +21,7 @@ class node():
         if type(self.form) == str:
             out += "form: %s, " % self.form
 
-        out += "feats: %s}" % (self.feats if self.feats else "{}")
+        out += "feats: %s}" % (self.feats or "{}")
 
         if type(self.form) == list:
             for i, form in enumerate(self.form):
@@ -31,30 +31,19 @@ class node():
 
 class avm(): # attribute value matrix
 
-    v2k = { # value to key
-        "adj": "cat", "noun": "cat",
-        "m": "gend", "f": "gend", "n": "gend",
-        "sg": "num", "pl": "num",
-        "nom": "case", "acc": "case",
-        "anim": "anim"
-    }
-
     def __init__(self, *feats):
 
-        self.cat = None # category (part of speech)
-        self.gend = None # gender
-        self.num = None # number
-        self.case = None
-        self.anim = None # animacy
+        for attr in A_DICT:
+            setattr(self, attr, None)
 
-        self.set(feats)
+        self.add(feats)
 
     def __repr__(self):
 
         pairs = ("%s: %s" % x for x in self.__dict__.items() if x[1])
         return "{%s}" % ", ".join(pairs)
 
-    def set(self, feats):
+    def add(self, feats):
 
         if not feats:
             return
@@ -65,10 +54,9 @@ class avm(): # attribute value matrix
             return
 
         for f in feats:
-            if f in self.v2k:
-                setattr(self, self.v2k[f], f)
-                continue
-            logger.err(ERR_UNKNOWN_FEATURE, f)
+            if f not in V_DICT:
+                logger.err(ERR_UNKNOWN_FEATURE, f)
+            setattr(self, V_DICT[f], f)
 
 def realize(lemma, feats, lexicon):
 
@@ -76,9 +64,9 @@ def realize(lemma, feats, lexicon):
         return lemma, None
 
     lang, cat, words = lexicon[lemma]
-    fs = avm()
-    fs.set(feats)
-    fs.set(cat)
+    fs = avm() # feature structure
+    fs.add(feats)
+    fs.add(cat)
 
     if fs.cat == "adj":
 
