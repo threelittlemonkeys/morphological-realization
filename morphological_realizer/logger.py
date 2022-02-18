@@ -1,5 +1,4 @@
-import sys
-from .constants import LOGGER_STREAM
+from .constants import *
 
 def log(*args):
     if LOGGER_STREAM == None:

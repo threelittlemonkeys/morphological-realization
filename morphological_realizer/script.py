@@ -4,31 +4,31 @@ from .constants import *
 def load_script(filename):
 
     fo = open(filename)
-    texts = list()
+    text = list()
     terms = list()
 
     for ln, line in enumerate(fo, 1):
 
         if line == "\n":
-            yield texts, terms
-            texts.clear()
+            yield text, terms
+            text.clear()
             terms.clear()
             continue
 
         line = line.strip()
-        tag, text = line.split(" ", 1)
+        tag, src = line.split(" ", 1)
 
         # term
         if tag.isnumeric():
             tag = int(tag)
             if tag == len(terms):
-                key = tuple(text.split(" "))
+                key = tuple(src.split(" "))
                 terms.append(key)
                 continue
 
         # text
         if tag in LANGS:
-            texts.append((tag, text))
+            text.append((tag, src))
             continue
 
         logger.err(ERR_INVALID_SYNTAX % (filename, ln))

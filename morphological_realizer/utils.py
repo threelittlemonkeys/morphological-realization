@@ -1,3 +1,31 @@
+class node():
+
+    def __init__(self, idx, head, form, feats = None, span = None):
+
+        self.idx = idx
+        self.head = head
+        self.span = span
+        self.form = form
+        self.feats = feats
+
+    def __repr__(self):
+
+        out = "node[%d] = {head: %s, " % (self.idx, self.head)
+
+        if self.span:
+            out += "span: %s, " % (self.span,)
+
+        if type(self.form) == str:
+            out += "form: %s, " % self.form
+
+        out += "feats: %s}" % (self.feats or "{}")
+
+        if type(self.form) == list:
+            for i, form in enumerate(self.form):
+                out += "\n  %s" % form
+
+        return out
+
 def final_consonant(c):
 
     fc = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ"

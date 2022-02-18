@@ -1,10 +1,8 @@
-import re
 from .constants import *
 
 def load_glossary(filename):
 
     fo = open(filename)
-
     keys = list()
     terms = list()
     glossary = dict()
@@ -32,7 +30,7 @@ def load_glossary(filename):
 
         for idx, token in enumerate(line.split(" ")):
 
-            m = RE_TERM_NODE.search(token)
+            m = RE_NODE.search(token)
             if m:
                 _idx, head, lemma = m.groups()
             else:

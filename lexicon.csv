@@ -43,12 +43,10 @@ de gesegnet n:pl:gen gesegneter
 de gesegnet n:pl:dat gesegneter
 
 en necklace noun
-
 en necklace sg necklace
 en necklace pl necklaces
 
 en shield noun
-
 en shield sg shield
 en shield pl shields
 
@@ -69,41 +67,41 @@ ru благословенный m:pl:acc:anim благословенных
 ru благословенный n:sg:acc:anim благословенного
 ru благословенный n:pl:acc:anim благословенных
 
-ru ожерелье noun:n
+# ru ожерелье noun:n
+# ru ожерелье sg:nom ожерелье
+# ru ожерелье sg:acc ожерелье
+# ru ожерелье pl:nom ожерелья
+# ru ожерелье pl:acc ожерелья
 
-ru ожерелье sg:nom ожерелье
-ru ожерелье sg:acc ожерелье
-ru ожерелье pl:nom ожерелья
-ru ожерелье pl:acc ожерелья
+ru* (.+)е noun:n
+ru* (.+)е sg:nom \1е
+ru* (.+)е sg:acc \1е
+ru* (.+)е pl:nom \1я
+ru* (.+)е pl:acc \1я
 
 ru человек noun:m:anim
-
 ru человек sg:nom человек
 ru человек sg:acc человека
 ru человек pl:nom люди
 ru человек pl:acc людей
 
 ru фантастический adj
-
 ru фантастический m:sg:nom фантастический
 ru фантастический m:sg:acc фантастический
 ru фантастический m:pl:nom фантастические
 ru фантастический m:pl:acc фантастические
 
 ru кожаный adj
-
-ru кожаный m:sg:nom кожаный 
-ru кожаный m:sg:acc кожаный 
+ru кожаный m:sg:nom кожаный
+ru кожаный m:sg:acc кожаный
 ru кожаный m:pl:nom кожаные
 ru кожаный m:pl:acc кожаные
 
-ru набедренник noun:m
-
-ru набедренник pl:nom набедренники
-ru набедренник pl:acc набедренники
+ru набедренник noun:m:pl
+ru набедренник nom набедренники
+ru набедренник acc набедренники
 
 ru зубей noun:m
-
 ru зубей sg:nom зубей
 ru зубей sg:acc зубея
 ru зубей sg:gen зубея
