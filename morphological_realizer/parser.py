@@ -86,7 +86,6 @@ class parser():
 
             printl("src =", src)
             printl("tgt =", tgt)
-            '''
             printl("lang =", lang)
             for i, term in enumerate(terms):
                 try:
@@ -94,9 +93,7 @@ class parser():
                     printl("term[%d] =" % i, term)
                 except:
                     pass
-
             printl("tree =")
             for e in tree:
                 printl(e)
-            '''
             printl()
