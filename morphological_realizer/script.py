@@ -1,4 +1,3 @@
-from . import logger
 from .constants import *
 
 def load_script(filename):
@@ -9,7 +8,14 @@ def load_script(filename):
 
     for ln, line in enumerate(fo, 1):
 
-        if line == "\n":
+        i = line.find("#")
+        if i == 0:
+            continue
+        elif i > 0:
+            line = line[:i]
+        line = line.strip()
+
+        if line == "":
             yield text, terms
             text.clear()
             terms.clear()
@@ -31,7 +37,6 @@ def load_script(filename):
             text.append((tag, src))
             continue
 
-        logger.err(ERR_INVALID_SYNTAX % (filename, ln))
-        sys.exit()
+        sys.exit(ERR_INVALID_SYNTAX % (filename, ln))
 
     fo.close()

@@ -1,4 +1,3 @@
-from . import logger
 from .constants import *
 from .lexicon import *
 from .glossary import *
@@ -16,7 +15,7 @@ class parser():
     def read(self, script):
         return load_script(script)
 
-    def parse_node(self, idx, tree, feats = None):
+    def parse_node(self, idx, tree, feats):
         e = tree[idx]
 
         if not e.feats:
@@ -85,19 +84,19 @@ class parser():
 
             # results
 
-            logger.log("src =", src)
-            logger.log("tgt =", tgt)
-            logger.log("lang =", lang)
-
+            printl("src =", src)
+            printl("tgt =", tgt)
+            '''
+            printl("lang =", lang)
             for i, term in enumerate(terms):
                 try:
                     term = self.glossary[term][lang][0]
-                    logger.log("term[%d] =" % i, term)
+                    printl("term[%d] =" % i, term)
                 except:
                     pass
 
-            logger.log("tree =")
+            printl("tree =")
             for e in tree:
-                logger.log(e)
-
-            logger.log()
+                printl(e)
+            '''
+            printl()

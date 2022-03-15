@@ -9,13 +9,18 @@ def load_glossary(filename):
 
     for ln, line in enumerate(fo, 1):
 
-        if line == "\n":
+        i = line.find("#")
+        if i >= 0:
+            line = line[:i]
+        line = line.strip()
+
+        if line == "":
 
             terms = {
                 lang: (line, tuple((heads[head], lemma) for head, lemma in term))
                 for lang, line, term, heads in terms
             }
-    
+
             for key in keys:
                 glossary[key] = terms
 

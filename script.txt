@@ -1,6 +1,108 @@
-0 blessed necklace
-1 환상의 쉬르노엔 가죽 각반
-en I want to buy {0:pl} and {1}.
-ko 나는 {0}들{_와} {1}{_을} 사고 싶습니다.
-ru Я продаю {0:pl:acc} и {1:acc}.
+0 театр # theatre
+1 студент # student
+2 конец # end
+3 купец # merchant
+4 клинок # blade
+5 жучок # bug
+6 никель # nickel
+7 клей # glue
+8 медведь # bear
+9 меч # sword
+10 сценарий # scenario
+11 змий # serpent
+ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
+ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
+ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
+ru {1:pl:nom} {1:pl:acc} {1:pl:gen} {1:pl:dat} {1:pl:inst} {1:pl:prep}
+ru {2:sg:nom} {2:sg:acc} {2:sg:gen} {2:sg:dat} {2:sg:inst} {2:sg:prep}
+ru {2:pl:nom} {2:pl:acc} {2:pl:gen} {2:pl:dat} {2:pl:inst} {2:pl:prep}
+ru {3:sg:nom} {3:sg:acc} {3:sg:gen} {3:sg:dat} {3:sg:inst} {3:sg:prep}
+ru {3:pl:nom} {3:pl:acc} {3:pl:gen} {3:pl:dat} {3:pl:inst} {3:pl:prep}
+ru {4:sg:nom} {4:sg:acc} {4:sg:gen} {4:sg:dat} {4:sg:inst} {4:sg:prep}
+ru {4:pl:nom} {4:pl:acc} {4:pl:gen} {4:pl:dat} {4:pl:inst} {4:pl:prep}
+ru {5:sg:nom} {5:sg:acc} {5:sg:gen} {5:sg:dat} {5:sg:inst} {5:sg:prep}
+ru {5:pl:nom} {5:pl:acc} {5:pl:gen} {5:pl:dat} {5:pl:inst} {5:pl:prep}
+ru {6:sg:nom} {6:sg:acc} {6:sg:gen} {6:sg:dat} {6:sg:inst} {6:sg:prep}
+ru {6:pl:nom} {6:pl:acc} {6:pl:gen} {6:pl:dat} {6:pl:inst} {6:pl:prep}
+ru {7:sg:nom} {7:sg:acc} {7:sg:gen} {7:sg:dat} {7:sg:inst} {7:sg:prep}
+ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
+ru {8:sg:nom} {8:sg:acc} {8:sg:gen} {8:sg:dat} {8:sg:inst} {8:sg:prep}
+ru {8:pl:nom} {8:pl:acc} {8:pl:gen} {8:pl:dat} {8:pl:inst} {8:pl:prep}
+ru {9:sg:nom} {9:sg:acc} {9:sg:gen} {9:sg:dat} {9:sg:inst} {9:sg:prep}
+ru {9:pl:nom} {9:pl:acc} {9:pl:gen} {9:pl:dat} {9:pl:inst} {9:pl:prep}
+ru {10:sg:nom} {10:sg:acc} {10:sg:gen} {10:sg:dat} {10:sg:inst} {10:sg:prep}
+ru {10:pl:nom} {10:pl:acc} {10:pl:gen} {10:pl:dat} {10:pl:inst} {10:pl:prep}
+ru {11:sg:nom} {11:sg:acc} {11:sg:gen} {11:sg:dat} {11:sg:inst} {11:sg:prep}
+ru {11:pl:nom} {11:pl:acc} {11:pl:gen} {11:pl:dat} {11:pl:inst} {11:pl:prep}
+
+0 слово # word
+1 окно # window
+2 пятно # spot
+3 жилище # dwelling
+4 чудовище # monster
+5 море # sea
+6 привидение # ghost
+7 ожерелье # necklace
+ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
+ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
+ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
+ru {1:pl:nom} {1:pl:acc} {1:pl:gen} {1:pl:dat} {1:pl:inst} {1:pl:prep}
+ru {2:sg:nom} {2:sg:acc} {2:sg:gen} {2:sg:dat} {2:sg:inst} {2:sg:prep}
+ru {2:pl:nom} {2:pl:acc} {2:pl:gen} {2:pl:dat} {2:pl:inst} {2:pl:prep}
+ru {3:sg:nom} {3:sg:acc} {3:sg:gen} {3:sg:dat} {3:sg:inst} {3:sg:prep}
+ru {3:pl:nom} {3:pl:acc} {3:pl:gen} {3:pl:dat} {3:pl:inst} {3:pl:prep}
+ru {4:sg:nom} {4:sg:acc} {4:sg:gen} {4:sg:dat} {4:sg:inst} {4:sg:prep}
+ru {4:pl:nom} {4:pl:acc} {4:pl:gen} {4:pl:dat} {4:pl:inst} {4:pl:prep}
+ru {5:sg:nom} {5:sg:acc} {5:sg:gen} {5:sg:dat} {5:sg:inst} {5:sg:prep}
+ru {5:pl:nom} {5:pl:acc} {5:pl:gen} {5:pl:dat} {5:pl:inst} {5:pl:prep}
+ru {6:sg:nom} {6:sg:acc} {6:sg:gen} {6:sg:dat} {6:sg:inst} {6:sg:prep}
+ru {6:pl:nom} {6:pl:acc} {6:pl:gen} {6:pl:dat} {6:pl:inst} {6:pl:prep}
+ru {7:sg:nom} {7:sg:acc} {7:sg:gen} {7:sg:dat} {7:sg:inst} {7:sg:prep}
+ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
+
+0 комната # room
+1 Кетра # Ketra
+2 свеча # candle
+3 Даша # Dasha
+4 овца # sheep
+5 курица # chicken
+6 идейка # idea
+7 утка # duck
+8 девушка # young woman
+9 песня # song
+10 боярышня # hawthorn
+11 магия # magic
+12 Мария # Maria
+13 честь # honour
+14 лошадь # horse
+ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
+ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
+ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
+ru {1:pl:nom} {1:pl:acc} {1:pl:gen} {1:pl:dat} {1:pl:inst} {1:pl:prep}
+ru {2:sg:nom} {2:sg:acc} {2:sg:gen} {2:sg:dat} {2:sg:inst} {2:sg:prep}
+ru {2:pl:nom} {2:pl:acc} {2:pl:gen} {2:pl:dat} {2:pl:inst} {2:pl:prep}
+ru {3:sg:nom} {3:sg:acc} {3:sg:gen} {3:sg:dat} {3:sg:inst} {3:sg:prep}
+ru {3:pl:nom} {3:pl:acc} {3:pl:gen} {3:pl:dat} {3:pl:inst} {3:pl:prep}
+ru {4:sg:nom} {4:sg:acc} {4:sg:gen} {4:sg:dat} {4:sg:inst} {4:sg:prep}
+ru {4:pl:nom} {4:pl:acc} {4:pl:gen} {4:pl:dat} {4:pl:inst} {4:pl:prep}
+ru {5:sg:nom} {5:sg:acc} {5:sg:gen} {5:sg:dat} {5:sg:inst} {5:sg:prep}
+ru {5:pl:nom} {5:pl:acc} {5:pl:gen} {5:pl:dat} {5:pl:inst} {5:pl:prep}
+ru {6:sg:nom} {6:sg:acc} {6:sg:gen} {6:sg:dat} {6:sg:inst} {6:sg:prep}
+ru {6:pl:nom} {6:pl:acc} {6:pl:gen} {6:pl:dat} {6:pl:inst} {6:pl:prep}
+ru {7:sg:nom} {7:sg:acc} {7:sg:gen} {7:sg:dat} {7:sg:inst} {7:sg:prep}
+ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
+ru {8:sg:nom} {8:sg:acc} {8:sg:gen} {8:sg:dat} {8:sg:inst} {8:sg:prep}
+ru {8:pl:nom} {8:pl:acc} {8:pl:gen} {8:pl:dat} {8:pl:inst} {8:pl:prep}
+ru {9:sg:nom} {9:sg:acc} {9:sg:gen} {9:sg:dat} {9:sg:inst} {9:sg:prep}
+ru {9:pl:nom} {9:pl:acc} {9:pl:gen} {9:pl:dat} {9:pl:inst} {9:pl:prep}
+ru {10:sg:nom} {10:sg:acc} {10:sg:gen} {10:sg:dat} {10:sg:inst} {10:sg:prep}
+ru {10:pl:nom} {10:pl:acc} {10:pl:gen} {10:pl:dat} {10:pl:inst} {10:pl:prep}
+ru {11:sg:nom} {11:sg:acc} {11:sg:gen} {11:sg:dat} {11:sg:inst} {11:sg:prep}
+ru {11:pl:nom} {11:pl:acc} {11:pl:gen} {11:pl:dat} {11:pl:inst} {11:pl:prep}
+ru {12:sg:nom} {12:sg:acc} {12:sg:gen} {12:sg:dat} {12:sg:inst} {12:sg:prep}
+ru {12:pl:nom} {12:pl:acc} {12:pl:gen} {12:pl:dat} {12:pl:inst} {12:pl:prep}
+ru {13:sg:nom} {13:sg:acc} {13:sg:gen} {13:sg:dat} {13:sg:inst} {13:sg:prep}
+ru {13:pl:nom} {13:pl:acc} {13:pl:gen} {13:pl:dat} {13:pl:inst} {13:pl:prep}
+ru {14:sg:nom} {14:sg:acc} {14:sg:gen} {14:sg:dat} {14:sg:inst} {14:sg:prep}
+ru {14:pl:nom} {14:pl:acc} {14:pl:gen} {14:pl:dat} {14:pl:inst} {14:pl:prep}
 

@@ -1,66 +1,93 @@
-from . import logger
 from .constants import *
 
 class avm(): # attribute value matrix
 
+    # attribute to value
+    atov = {
+        "cat": ["adj", "noun"],
+        "gend": ["m", "f", "n"],
+        "num": ["sg", "pl"],
+        "case": ["nom", "acc", "gen", "dat", "inst", "prep"],
+        "anim": ["anim"]
+    }
+
+    # value to attribute
+    vtoa = {v: a for a, vs in atov.items() for v in vs}
+
     def __init__(self, feats = None):
         '''
-        for attr in A_DICT:
-            setattr(self, attr, None)
+        for a in self.atov:
+            setattr(self, a, None)
         '''
         self.update(feats)
 
     def __repr__(self):
-        pairs = ("%s: %s" % x for x in self.__dict__.items() if x[1])
-        return "{%s}" % ", ".join(pairs)
+        return "{%s}" % ", ".join("%s: %s" % x for x in self.__dict__.items())
 
-    def values(self):
-        return set(v for k, v in self.__dict__.items() if v)
-
-    def update(self, feats):
-        if not feats:
-            return
+    def _iter(self, feats):
 
         if type(feats) == avm:
-            for k, v in feats.__dict__.items():
-                setattr(self, k, v)
+            for a, v in feats.__dict__.items():
+                yield a, v
             return
 
-        for f in feats:
-            if f not in V_DICT:
-                logger.err(ERR_UNKNOWN_FEATURE, f)
-            setattr(self, V_DICT[f], f)
+        for v in feats:
+            if v not in self.vtoa:
+                sys.exit(ERR_UNKNOWN_FEATURE % v)
+            a = self.vtoa[v]
+            yield a, v
 
-def realize(parser, lemma, feats):
+    def exist(self, feats):
+        for a, v in self._iter(feats):
+            if hasattr(self, a) and getattr(self, a) != v:
+                return True
 
-    lang = parser.lang
-    lexicon = parser.lexicon
+    def update(self, feats):
+        for a, v in self._iter(feats):
+            setattr(self, a, v)
 
-    if lang not in lexicon:
+def realize(parser, lemma, query):
+
+    if parser.lang not in parser.lexicon:
+        return lemma, None
+    lexicon = parser.lexicon[parser.lang]
+
+    cands = dict()
+    feats = [query]
+
+    for pt in lexicon[0]:
+        if pt.search(lemma):
+            for fs, w in lexicon[0][pt].items():
+                cands[fs] = (pt, w)
+
+    if lemma in lexicon[1]:
+        for fs, w in lexicon[1][lemma].items():
+            if w:
+                cands[fs] = w
+                continue
+            fs = avm(fs)
+            if fs.exist(query):
+                continue
+            fs.update(query)
+            feats.append(fs)
+
+    if not cands:
         return lemma, None
 
-    words = None
-    _lemma = None
-    if lemma in lexicon[lang][0]:
-        words = lexicon[lang][0][lemma]
-    else:
-        for _lemma in lexicon[lang][1]:
-            if _lemma.search(lemma):
-                words = lexicon[lang][1][_lemma]
-                _re = True
-                break
+    def _criterion(cand):
+        f1, f2, _ = cand
+        f2 = set(f2)
+        a = f2.intersection(f1.__dict__.values())
+        b = f2 - a
+        return (-len(a), len(b))
 
-    if not words:
-        return lemma, None
+    cands = [(a, b, c) for a in feats for b, c in cands.items() if not a.exist(b)]
+    cands = sorted(cands, key = _criterion)
 
-    feats = avm(feats)
-    vs = feats.values()
+    f1, f2, word = cands[0]
+    f1.update(f2)
 
-    cands = [(x, set(x[0]).intersection(vs)) for x in words.items()]
-    c_feats, c_word = sorted(cands, key = lambda x: -len(x[1]))[0][0]
+    if type(word) == tuple:
+        word = word[0].sub(word[1], lemma)
 
-    if _lemma:
-        c_word = _lemma.sub(c_word, lemma)
-    feats.update(c_feats)
-
-    return c_word, feats
+    return word, f1

@@ -5,7 +5,6 @@ if __name__ == "__main__":
     if len(sys.argv) != 4:
         sys.exit("Usage: %s lexicon glossary script" % sys.argv[0])
 
-    # mr = parser(
     mr = parser(
         lexicon = sys.argv[1],
         glossary = sys.argv[2]

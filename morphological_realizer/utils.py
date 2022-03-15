@@ -1,3 +1,5 @@
+from .constants import *
+
 class node():
 
     def __init__(self, idx, head, form, feats = None, span = None):
@@ -25,6 +27,9 @@ class node():
                 out += "\n  %s" % form
 
         return out
+
+def printl(*args, **kwargs):
+    print(*args, **kwargs, file = LOG_FILE_STREAM)
 
 def final_consonant(c):
 

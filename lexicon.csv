@@ -1,107 +1,270 @@
-de halskette noun:f
+# MASCULINE HARD STEM
 
-de halskette sg:nom halskette
-de halskette sg:acc halskette
-de halskette sg:gen halskette
-de halskette sg:dat halskette
+ru* (.+) noun:m:sg:nom \1
+ru* (.+) noun:m:sg:acc \1
+ru* (.+) noun:m:sg:acc:anim \1а
+ru* (.+) noun:m:sg:gen \1а
+ru* (.+) noun:m:sg:dat \1у
+ru* (.+) noun:m:sg:inst \1ом
+ru* (.+) noun:m:sg:prep \1е
+ru* (.+) noun:m:pl:nom \1ы
+ru* (.+) noun:m:pl:acc \1ы
+ru* (.+) noun:m:pl:acc:anim \1ов
+ru* (.+) noun:m:pl:gen \1ов
+ru* (.+) noun:m:pl:dat \1ам
+ru* (.+) noun:m:pl:inst \1ами
+ru* (.+) noun:m:pl:prep \1ах
 
-de halskette pl:nom halsketten
-de halskette pl:acc halsketten
-de halskette pl:gen halsketten
-de halskette pl:dat halsketten
+ru театр noun:m
+ru студент noun:m:anim
 
-de gesegnet adj
+# MASCULINE VELAR/SIBILANT STEM
 
-de gesegnet m:sg:nom gesegneter
-de gesegnet m:sg:acc gesegneten
-de gesegnet m:sg:gen gesegnetes
-de gesegnet m:sg:dat gesegnetem
+ru* (.+[гкхжчшщ]) noun:m:pl:nom \1и
+ru* (.+[гкхжчшщ]) noun:m:pl:acc \1и
+ru* (.+[жчшщ]) noun:m:pl:acc:anim \1ей
+ru* (.+[жчшщ]) noun:m:pl:gen \1ей
 
-de gesegnet m:pl:nom gesegnete
-de gesegnet m:pl:acc gesegnete
-de gesegnet m:pl:gen gesegneter
-de gesegnet m:pl:dat gesegneter
+ru меч noun:m
+ru мошенник noun:m:anim
 
-de gesegnet f:sg:nom gesegnete
-de gesegnet f:sg:acc gesegnete
-de gesegnet f:sg:gen gesegneter
-de gesegnet f:sg:dat gesegneter
+# MASCULINE Ц STEM
 
-de gesegnet f:pl:nom gesegnete
-de gesegnet f:pl:acc gesegnete
-de gesegnet f:pl:gen gesegneter
-de gesegnet f:pl:dat gesegneter
+# ru* (.+[цжчшщ]) noun:m:sg:inst \1ем # unstressed
+# ru* (.+ц) noun:m:pl:acc:anim \1ов # stressed
+# ru* (.+ц) noun:m:pl:acc:anim \1ев # unstressed
+# ru* (.+ц) noun:m:pl:gen \1ов # stressed
+# ru* (.+ц) noun:m:pl:gen \1ев # unstressed
 
-de gesegnet n:sg:nom gesegnetes
-de gesegnet n:sg:acc gesegnetes
-de gesegnet n:sg:gen gesegneten
-de gesegnet n:sg:dat gesegnetem
+# MASCULINE HARD STEM WITH VOWEL DELETIONS
 
-de gesegnet n:pl:nom gesegnete
-de gesegnet n:pl:acc gesegnete
-de gesegnet n:pl:gen gesegneter
-de gesegnet n:pl:dat gesegneter
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:acc:anim \1\g<A>\g<B>а
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:gen \1\g<A>\g<B>а
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:dat \1\g<A>\g<B>у
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:inst \1\g<A>\g<B>ом
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:prep \1\g<A>\g<B>е
+ru* (.+)ец noun:m:pl:nom \1цы
+ru* (.+)ец noun:m:pl:acc \1цы
+ru* (.+)ок noun:m:pl:nom \1ки
+ru* (.+)ок noun:m:pl:acc \1ки
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:acc:anim \1\g<A>\g<B>ов
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:gen \1\g<A>\g<B>ов
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:dat \1\g<A>\g<B>ам
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:inst \1\g<A>\g<B>ами
+ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:prep \1\g<A>\g<B>ах
 
-en necklace noun
-en necklace sg necklace
-en necklace pl necklaces
+ru конец noun:m
+ru купец noun:m:anim
+ru клинок noun:m
+ru жучок noun:m:anim
 
-en shield noun
-en shield sg shield
-en shield pl shields
+# MASCULINE SOFT/VOWEL STEM
 
-ru благословенный adj
+ru* (.+)[ьй] noun:m:sg:acc:anim \1я
+ru* (.+)[ьй] noun:m:sg:gen \1я
+ru* (.+)[ьй] noun:m:sg:dat \1ю
+ru* (.+)[ьй] noun:m:sg:inst \1ем
+ru* (.+)[ьй] noun:m:sg:prep \1е
+ru* (.+и)й noun:m:sg:prep \1и
+ru* (.+)[ьй] noun:m:pl:nom \1и
+ru* (.+)[ьй] noun:m:pl:acc \1и
+ru* (.+)ь noun:m:pl:acc:anim \1ей
+ru* (.+)ь noun:m:pl:gen \1ей
+ru* (.+)й noun:m:pl:acc:anim \1ев
+ru* (.+)й noun:m:pl:gen \1ев
+ru* (.+)[ьй] noun:m:pl:dat \1ям
+ru* (.+)[ьй] noun:m:pl:inst \1ями
+ru* (.+)[ьй] noun:m:pl:prep \1ях
 
-ru благословенный m:sg:nom благословенный
-ru благословенный m:sg:acc благословенный
-ru благословенный m:pl:nom благословенные
-ru благословенный m:pl:acc благословенные
+ru никель noun:m
+ru клей noun:m
+ru медведь noun:m:anim
+ru сценарий noun:m
+ru змий noun:m:anim
 
-ru благословенный n:sg:nom благословенное
-ru благословенный n:sg:acc благословенное
-ru благословенный n:pl:nom благословенные
-ru благословенный n:pl:acc благословенные
+# NEUTER HARD STEM
 
-ru благословенный m:sg:acc:anim благословенного
-ru благословенный m:pl:acc:anim благословенных
-ru благословенный n:sg:acc:anim благословенного
-ru благословенный n:pl:acc:anim благословенных
+ru* (.+)о noun:n:sg:nom \1о
+ru* (.+)о noun:n:sg:acc \1о
+ru* (.+)о noun:n:sg:acc:anim \1а
+ru* (.+)о noun:n:sg:gen \1а
+ru* (.+)о noun:n:sg:dat \1у
+ru* (.+)о noun:n:sg:inst \1ом
+ru* (.+)о noun:n:sg:prep \1е
+ru* (.+)о noun:n:pl:nom \1а
+ru* (.+)о noun:n:pl:acc \1а
+ru* (.+(CV|VC))о noun:n:pl:acc:anim \1
+ru* (.+(CV|VC))о noun:n:pl:gen \1
+ru* (.+)о noun:n:pl:dat \1ам
+ru* (.+)о noun:n:pl:inst \1ами
+ru* (.+)о noun:n:pl:prep \1ах
 
-# ru ожерелье noun:n
-# ru ожерелье sg:nom ожерелье
-# ru ожерелье sg:acc ожерелье
-# ru ожерелье pl:nom ожерелья
-# ru ожерелье pl:acc ожерелья
+ru слово noun:n
 
-ru* (.+)е noun:n
-ru* (.+)е sg:nom \1е
-ru* (.+)е sg:acc \1е
-ru* (.+)е pl:nom \1я
-ru* (.+)е pl:acc \1я
+# NEUTER HARD STEM WITH DOUBLE CONSONANTS
 
-ru человек noun:m:anim
-ru человек sg:nom человек
-ru человек sg:acc человека
-ru человек pl:nom люди
-ru человек pl:acc людей
+ru* (.+C)(C)о noun:n:pl:acc:anim \1о\2 # -о-, -е-
+ru* (.+C)(C)о noun:n:pl:gen \1о\2 # -о-, -е-
 
-ru фантастический adj
-ru фантастический m:sg:nom фантастический
-ru фантастический m:sg:acc фантастический
-ru фантастический m:pl:nom фантастические
-ru фантастический m:pl:acc фантастические
+ru окно noun:n
+ru пятно noun:n
+ru пятно noun:n:pl:gen пятен
 
-ru кожаный adj
-ru кожаный m:sg:nom кожаный
-ru кожаный m:sg:acc кожаный
-ru кожаный m:pl:nom кожаные
-ru кожаный m:pl:acc кожаные
+# NEUTER SOFT STEM
 
-ru набедренник noun:m:pl
-ru набедренник nom набедренники
-ru набедренник acc набедренники
+ru* (.+)е noun:n:sg:nom \1е
+ru* (.+)е noun:n:sg:acc \1е
+ru* (.+)е noun:n:sg:acc:anim \1я
+ru* (.+)е noun:n:sg:gen \1я
+ru* (.+)е noun:n:sg:dat \1ю
+ru* (.+)е noun:n:sg:inst \1ем
+ru* (.+)е noun:n:sg:prep \1е
+ru* (.+)е noun:n:pl:nom \1я
+ru* (.+)е noun:n:pl:acc \1я
+ru* (.+)е noun:n:pl:acc:anim \1ей
+ru* (.+)е noun:n:pl:gen \1ей
+ru* (.+)е noun:n:pl:dat \1ям
+ru* (.+)е noun:n:pl:inst \1ями
+ru* (.+)е noun:n:pl:prep \1ях
 
-ru зубей noun:m
-ru зубей sg:nom зубей
-ru зубей sg:acc зубея
-ru зубей sg:gen зубея
+ru море noun:n
+
+# NEUTER VOWEL STEM
+
+ru* (.+)[иь]е noun:n:pl:acc:anim \1ий
+ru* (.+)[иь]е noun:n:pl:gen \1ий
+
+ru привидение noun:n
+ru ожерелье noun:n
+
+# NEUTER SIBILANT-STEM
+
+ru* (.+[жчшщ])е noun:n:sg:acc:anim \1а
+ru* (.+[жчшщ])е noun:n:sg:gen \1а
+ru* (.+[жчшщ])е noun:n:sg:dat \1у
+ru* (.+[жчшщ])е noun:n:pl:nom \1а
+ru* (.+[жчшщ])е noun:n:pl:acc \1а
+ru* (.+[жчшщ])е noun:n:pl:acc:anim \1
+ru* (.+[жчшщ])е noun:n:pl:gen \1
+ru* (.+[жчшщ])е noun:n:pl:dat \1ам
+ru* (.+[жчшщ])е noun:n:pl:inst \1ами
+ru* (.+[жчшщ])е noun:n:pl:prep \1ах
+
+ru жилище noun:n
+ru чудовище noun:n:anim
+
+# FEMININE HARD STEM
+
+ru* (.+)а noun:f:sg:nom \1а
+ru* (.+)а noun:f:sg:acc \1у
+ru* (.+)а noun:f:sg:gen \1ы
+ru* (.+)а noun:f:sg:dat \1е
+ru* (.+)а noun:f:sg:inst \1ой
+ru* (.+)а noun:f:sg:prep \1е
+ru* (.+)а noun:f:pl:nom \1ы
+ru* (.+)а noun:f:pl:acc \1ы
+ru* (.+)а noun:f:pl:acc:anim \1
+ru* (.+)а noun:f:pl:gen \1
+ru* (.+)а noun:f:pl:dat \1ам
+ru* (.+)а noun:f:pl:inst \1ами
+ru* (.+)а noun:f:pl:prep \1ах
+
+ru комната noun:f
+ru Кетра noun:f:anim
+
+# FEMININE VELAR/SIBILANT STEM
+
+ru* (.+[гкхжчшщ])а noun:f:sg:gen \1и
+ru* (.+[гкхжчшщ])а noun:f:sg:dat \1е
+ru* (.+[гкхжчшщ])а noun:f:sg:inst \1ой # stressed
+# ru* (.+[жчшщ])а noun:f:sg:inst \1ей # unstressed
+ru* (.+[гкхжчшщ])а noun:f:sg:prep \1е
+ru* (.+[гкхжчшщ])а noun:f:pl:nom \1и
+ru* (.+[гкхжчшщ])а noun:f:pl:acc \1и
+ru* (.+[гкхжчшщ])а noun:f:pl:acc:anim \1
+ru* (.+[гкхжчшщ])а noun:f:pl:gen \1
+ru* (.+[гкхжчшщ])а noun:f:pl:dat \1ам
+ru* (.+[гкхжчшщ])а noun:f:pl:inst \1ами
+ru* (.+[гкхжчшщ])а noun:f:pl:prep \1ах
+
+ru свеча noun:f
+ru Даша noun:f:anim
+
+# FEMININE VELAR STEM WITH DOUBLE CONSONANTS
+
+ru* (.+)йка noun:f:pl:acc:anim \1ек
+ru* (.+)йка noun:f:pl:gen \1ек
+ru* (.+C)ка noun:f:pl:acc:anim \1ок # [^жчшщ]
+ru* (.+C)ка noun:f:pl:gen \1ок # [^жчшщ]
+ru* (.+[жчшщ])ка noun:f:pl:acc:anim \1ек
+ru* (.+[жчшщ])ка noun:f:pl:gen \1ек
+
+ru идейка noun:f
+ru утка noun:f:anim
+ru девушка noun:f:anim
+
+# FEMININE Ц STEM
+
+# ru* (.+ц)а noun:f:sg:inst \1ой # stressed
+ru* (.+ц)а noun:f:sg:inst \1ей # unstressed
+ru* (.+C)ца noun:f:pl:acc:anim \1ец # -е-, -о-
+ru* (.+C)ца noun:f:pl:gen \1ец # -е-, -о-
+
+ru овца noun:f:anim
+ru овца noun:f:anim:sg:inst овцой
+ru курица noun:f:anim
+
+# FEMININE SOFT STEM
+
+ru* (.+)я noun:f:sg:nom \1я
+ru* (.+)я noun:f:sg:acc \1ю
+ru* (.+)я noun:f:sg:gen \1и
+ru* (.+)я noun:f:sg:dat \1е
+ru* (.+)я noun:f:sg:inst \1ей
+ru* (.+)я noun:f:sg:prep \1е
+ru* (.+)я noun:f:pl:nom \1и
+ru* (.+)я noun:f:pl:acc \1и
+ru* (.+)я noun:f:pl:acc:anim \1ь
+ru* (.+)я noun:f:pl:gen \1ь
+ru* (.+)я noun:f:pl:dat \1ям
+ru* (.+)я noun:f:pl:inst \1ями
+ru* (.+)я noun:f:pl:prep \1ях
+
+# FEMININE SOFT STEM WITH DOUBLE CONSONANTS
+
+ru* (.+C)(C)я noun:f:pl:acc:anim \1е\2 # -е-, -о-
+ru* (.+C)(C)я noun:f:pl:gen \1е\2 # -е-, -о-
+
+ru песня noun:f
+ru боярышня noun:f:anim
+ru боярышня noun:f:pl:acc:anim боярышень
+ru боярышня noun:f:pl:gen боярышень
+
+# FEMININE I STEM
+
+ru* (.+и)я noun:f:sg:dat \1и
+ru* (.+и)я noun:f:sg:prep \1и
+ru* (.+и)я noun:f:pl:acc:anim \1й
+ru* (.+и)я noun:f:pl:gen \1й
+
+ru магия noun:f
+ru Мария noun:f:anim
+
+# FEMININE Ь STEM
+
+ru* (.+)ь noun:f:sg:nom \1ь
+ru* (.+)ь noun:f:sg:acc \1ь
+ru* (.+)ь noun:f:sg:gen \1и
+ru* (.+)ь noun:f:sg:dat \1и
+ru* (.+)ь noun:f:sg:inst \1ью
+ru* (.+)ь noun:f:sg:prep \1и
+ru* (.+)ь noun:f:pl:nom \1и
+ru* (.+)ь noun:f:pl:acc \1и
+ru* (.+)ь noun:f:pl:acc:anim \1ей
+ru* (.+)ь noun:f:pl:gen \1ей
+ru* (.+)ь noun:f:pl:dat \1ям
+ru* (.+)ь noun:f:pl:inst \1ями
+ru* (.+)ь noun:f:pl:prep \1ях
+
+ru честь noun:f
+ru лошадь noun:f:anim

@@ -1,11 +1,9 @@
-from . import logger
 from .constants import *
 
 def load_lexicon(filename):
 
     fo = open(filename)
     lexicon = dict()
-    _feats = None
 
     for ln, line in enumerate(fo, 1):
 
@@ -19,26 +17,26 @@ def load_lexicon(filename):
 
         lang, lemma, feats, *word = line.split(" ")
         feats = tuple(feats.split(":"))
+        word = word[0] if word else None
 
-        idx = 0
+        idx = 1
         if lang[-1] == "*":
-            idx = 1
+            idx = 0
             lang = lang[:-1]
 
         if lang not in lexicon:
             lexicon[lang] = [dict(), dict()]
 
-        if idx:
+        if not idx:
+            if lang == "ru":
+                lemma = re.sub("(?<!<)C(?!>)", "[бвгджзклмнпрстфхцчшщ]", lemma)
+                lemma = re.sub("(?<!<)V(?!>)", "[аеёийоуъыьэюя]", lemma)
             lemma = re.compile("^%s$" % lemma)
+
         if lemma not in lexicon[lang][idx]:
             lexicon[lang][idx][lemma] = dict()
 
-        if not word:
-            _feats = feats
-            continue
-
-        print(lemma, _feats + feats, word[0])
-        lexicon[lang][idx][lemma][_feats + feats] = word[0]
+        lexicon[lang][idx][lemma][feats] = word
 
     fo.close()
     return lexicon
