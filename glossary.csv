@@ -1,70 +1,12 @@
-ru {:*_театр} # theatre
+de {:0_gesegnet} {0:*_halskette}
+en blessed {:*_necklace}
+ko 축복받은 목걸이
+ru {:0_благословенный} {0:*_ожерелье}
 
-ru {:*_студент} # student
+en guardian {:*_shield}
+ko 수호 방패
 
-ru {:*_конец} # end
-
-ru {:*_купец} # merchant
-
-ru {:*_клинок} # blade
-
-ru {:*_жучок} # bug
-
-ru {:*_никель} # nickel
-
-ru {:*_клей} # glue
-
-ru {:*_медведь} # bear
-
-ru {:*_меч} # sword
-
-ru {:*_сценарий} # scenario
-
-ru {:*_змий} # serpent
-
-ru {:*_слово} # word
-
-ru {:*_окно} # window
-
-ru {:*_пятно} # spot
-
-ru {:*_море} # sea
-
-ru {:*_привидение} # ghost
-
-ru {:*_ожерелье} # necklace
-
-ru {:*_жилище} # dwelling
-
-ru {:*_чудовище} # monster
-
-ru {:*_комната} # room
-
-ru {:*_Кетра} # Ketra
-
-ru {:*_свеча} # candle
-
-ru {:*_Даша} # Dasha
-
-ru {:*_овца} # sheep
-
-ru {:*_курица} # chicken
-
-ru {:*_идейка} # idea
-
-ru {:*_утка} # duck
-
-ru {:*_девушка} # young woman
-
-ru {:*_песня} # song
-
-ru {:*_боярышня} # hawthorn
-
-ru {:*_магия} # magic
-
-ru {:*_Мария} # Maria
-
-ru {:*_честь} # honour
-
-ru {:*_лошадь} # horse
+en fantasy Zubei's leather gaiters
+ko 환상의 쉬르노엔 가죽 각반
+ru {:0_фантастический} {:0_кожаный} {0:*_набедренник} Зубея
 

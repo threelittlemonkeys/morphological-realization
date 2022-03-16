@@ -26,6 +26,9 @@ class avm(): # attribute value matrix
 
     def _iter(self, feats):
 
+        if not feats:
+            return
+
         if type(feats) == avm:
             for a, v in feats.__dict__.items():
                 yield a, v
@@ -71,9 +74,6 @@ def realize(parser, lemma, query):
             fs.update(query)
             feats.append(fs)
 
-    if not cands:
-        return lemma, None
-
     def _criterion(cand):
         f1, f2, _ = cand
         f2 = set(f2)
@@ -83,6 +83,9 @@ def realize(parser, lemma, query):
 
     cands = [(a, b, c) for a in feats for b, c in cands.items() if not a.exist(b)]
     cands = sorted(cands, key = _criterion)
+
+    if not cands:
+        return lemma, None
 
     f1, f2, word = cands[0]
     f1.update(f2)
