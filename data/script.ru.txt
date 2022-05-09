@@ -1,3 +1,4 @@
+# MASCULINE NOUNS
 0 театр # theatre
 1 студент # student
 2 конец # end
@@ -35,6 +36,7 @@ ru {10:pl:nom} {10:pl:acc} {10:pl:gen} {10:pl:dat} {10:pl:inst} {10:pl:prep}
 ru {11:sg:nom} {11:sg:acc} {11:sg:gen} {11:sg:dat} {11:sg:inst} {11:sg:prep}
 ru {11:pl:nom} {11:pl:acc} {11:pl:gen} {11:pl:dat} {11:pl:inst} {11:pl:prep}
 
+# NEUTER NOUNS
 0 слово # word
 1 окно # window
 2 пятно # spot
@@ -60,6 +62,7 @@ ru {6:pl:nom} {6:pl:acc} {6:pl:gen} {6:pl:dat} {6:pl:inst} {6:pl:prep}
 ru {7:sg:nom} {7:sg:acc} {7:sg:gen} {7:sg:dat} {7:sg:inst} {7:sg:prep}
 ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
 
+# FEMININE NOUNS
 0 комната # room
 1 Кетра # Ketra
 2 свеча # candle

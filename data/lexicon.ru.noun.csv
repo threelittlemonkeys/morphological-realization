@@ -1,4 +1,4 @@
-# MASCULINE HARD STEM
+# NOUN: MASCULINE HARD STEM
 
 ru* (.+) noun:m:sg:nom \1
 ru* (.+) noun:m:sg:acc \1
@@ -18,7 +18,7 @@ ru* (.+) noun:m:pl:prep \1ах
 ru театр noun:m
 ru студент noun:m:anim
 
-# MASCULINE VELAR/SIBILANT STEM
+# NOUN: MASCULINE VELAR/SIBILANT STEM
 
 ru* (.+[гкхжчшщ]) noun:m:pl:nom \1и
 ru* (.+[гкхжчшщ]) noun:m:pl:acc \1и
@@ -28,7 +28,7 @@ ru* (.+[жчшщ]) noun:m:pl:gen \1ей
 ru меч noun:m
 ru мошенник noun:m:anim
 
-# MASCULINE Ц STEM
+# NOUN: MASCULINE Ц STEM
 
 # ru* (.+[цжчшщ]) noun:m:sg:inst \1ем # unstressed
 # ru* (.+ц) noun:m:pl:acc:anim \1ов # stressed
@@ -36,7 +36,7 @@ ru мошенник noun:m:anim
 # ru* (.+ц) noun:m:pl:gen \1ов # stressed
 # ru* (.+ц) noun:m:pl:gen \1ев # unstressed
 
-# MASCULINE HARD STEM WITH VOWEL DELETIONS
+# NOUN: MASCULINE HARD STEM WITH VOWEL DELETIONS
 
 ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:acc:anim \1\g<A>\g<B>а
 ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:gen \1\g<A>\g<B>а
@@ -58,8 +58,10 @@ ru купец noun:m:anim
 ru клинок noun:m
 ru жучок noun:m:anim
 
-# MASCULINE SOFT/VOWEL STEM
+# NOUN: MASCULINE SOFT/VOWEL STEM
 
+ru* (.+[ьй]) noun:m:sg:nom \1
+ru* (.+[ьй]) noun:m:sg:acc \1
 ru* (.+)[ьй] noun:m:sg:acc:anim \1я
 ru* (.+)[ьй] noun:m:sg:gen \1я
 ru* (.+)[ьй] noun:m:sg:dat \1ю
@@ -77,7 +79,6 @@ ru* (.+)[ьй] noun:m:pl:inst \1ями
 ru* (.+)[ьй] noun:m:pl:prep \1ях
 
 ru никель noun:m
-ru клей noun:m
 ru медведь noun:m:anim
 ru сценарий noun:m
 ru змий noun:m:anim
@@ -101,7 +102,7 @@ ru* (.+)о noun:n:pl:prep \1ах
 
 ru слово noun:n
 
-# NEUTER HARD STEM WITH DOUBLE CONSONANTS
+# NOUN: NEUTER HARD STEM WITH DOUBLE CONSONANTS
 
 ru* (.+C)(C)о noun:n:pl:acc:anim \1о\2 # -о-, -е-
 ru* (.+C)(C)о noun:n:pl:gen \1о\2 # -о-, -е-
@@ -110,7 +111,7 @@ ru окно noun:n
 ru пятно noun:n
 ru пятно noun:n:pl:gen пятен
 
-# NEUTER SOFT STEM
+# NOUN: NEUTER SOFT STEM
 
 ru* (.+)е noun:n:sg:nom \1е
 ru* (.+)е noun:n:sg:acc \1е
@@ -129,15 +130,15 @@ ru* (.+)е noun:n:pl:prep \1ях
 
 ru море noun:n
 
-# NEUTER VOWEL STEM
+# NOUN: NEUTER VOWEL STEM
 
 ru* (.+)[иь]е noun:n:pl:acc:anim \1ий
 ru* (.+)[иь]е noun:n:pl:gen \1ий
 
-ru привидение noun:n
 ru ожерелье noun:n
+ru привидение noun:n
 
-# NEUTER SIBILANT-STEM
+# NOUN: NEUTER SIBILANT-STEM
 
 ru* (.+[жчшщ])е noun:n:sg:acc:anim \1а
 ru* (.+[жчшщ])е noun:n:sg:gen \1а
@@ -153,10 +154,11 @@ ru* (.+[жчшщ])е noun:n:pl:prep \1ах
 ru жилище noun:n
 ru чудовище noun:n:anim
 
-# FEMININE HARD STEM
+# NOUN: FEMININE HARD STEM
 
 ru* (.+)а noun:f:sg:nom \1а
 ru* (.+)а noun:f:sg:acc \1у
+ru* (.+)а noun:f:sg:acc:anim \1у
 ru* (.+)а noun:f:sg:gen \1ы
 ru* (.+)а noun:f:sg:dat \1е
 ru* (.+)а noun:f:sg:inst \1ой
@@ -172,7 +174,7 @@ ru* (.+)а noun:f:pl:prep \1ах
 ru комната noun:f
 ru Кетра noun:f:anim
 
-# FEMININE VELAR/SIBILANT STEM
+# NOUN: FEMININE VELAR/SIBILANT STEM
 
 ru* (.+[гкхжчшщ])а noun:f:sg:gen \1и
 ru* (.+[гкхжчшщ])а noun:f:sg:dat \1е
@@ -190,7 +192,7 @@ ru* (.+[гкхжчшщ])а noun:f:pl:prep \1ах
 ru свеча noun:f
 ru Даша noun:f:anim
 
-# FEMININE VELAR STEM WITH DOUBLE CONSONANTS
+# NOUN: FEMININE VELAR STEM WITH DOUBLE CONSONANTS
 
 ru* (.+)йка noun:f:pl:acc:anim \1ек
 ru* (.+)йка noun:f:pl:gen \1ек
@@ -203,7 +205,7 @@ ru идейка noun:f
 ru утка noun:f:anim
 ru девушка noun:f:anim
 
-# FEMININE Ц STEM
+# NOUN: FEMININE Ц STEM
 
 # ru* (.+ц)а noun:f:sg:inst \1ой # stressed
 ru* (.+ц)а noun:f:sg:inst \1ей # unstressed
@@ -214,10 +216,11 @@ ru овца noun:f:anim
 ru овца noun:f:anim:sg:inst овцой
 ru курица noun:f:anim
 
-# FEMININE SOFT STEM
+# NOUN: FEMININE SOFT STEM
 
 ru* (.+)я noun:f:sg:nom \1я
 ru* (.+)я noun:f:sg:acc \1ю
+ru* (.+)я noun:f:sg:acc:anim \1ю
 ru* (.+)я noun:f:sg:gen \1и
 ru* (.+)я noun:f:sg:dat \1е
 ru* (.+)я noun:f:sg:inst \1ей
@@ -230,7 +233,7 @@ ru* (.+)я noun:f:pl:dat \1ям
 ru* (.+)я noun:f:pl:inst \1ями
 ru* (.+)я noun:f:pl:prep \1ях
 
-# FEMININE SOFT STEM WITH DOUBLE CONSONANTS
+# NOUN: FEMININE SOFT STEM WITH DOUBLE CONSONANTS
 
 ru* (.+C)(C)я noun:f:pl:acc:anim \1е\2 # -е-, -о-
 ru* (.+C)(C)я noun:f:pl:gen \1е\2 # -е-, -о-
@@ -240,20 +243,22 @@ ru боярышня noun:f:anim
 ru боярышня noun:f:pl:acc:anim боярышень
 ru боярышня noun:f:pl:gen боярышень
 
-# FEMININE I STEM
+# NOUN: FEMININE VOWEL STEM
 
 ru* (.+и)я noun:f:sg:dat \1и
 ru* (.+и)я noun:f:sg:prep \1и
-ru* (.+и)я noun:f:pl:acc:anim \1й
-ru* (.+и)я noun:f:pl:gen \1й
+ru* (.+[ие])я noun:f:pl:acc:anim \1й
+ru* (.+[ие])я noun:f:pl:gen \1й
 
 ru магия noun:f
 ru Мария noun:f:anim
+ru змея noun:f:anim
 
-# FEMININE Ь STEM
+# NOUN: FEMININE Ь STEM
 
 ru* (.+)ь noun:f:sg:nom \1ь
 ru* (.+)ь noun:f:sg:acc \1ь
+ru* (.+)ь noun:f:sg:acc:anim \1ь
 ru* (.+)ь noun:f:sg:gen \1и
 ru* (.+)ь noun:f:sg:dat \1и
 ru* (.+)ь noun:f:sg:inst \1ью

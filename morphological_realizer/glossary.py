@@ -1,11 +1,10 @@
 from .constants import *
 
-def load_glossary(filename):
-
+def load_glossary(glossary, filename):
     fo = open(filename)
+
     keys = list()
     terms = list()
-    glossary = dict()
 
     for ln, line in enumerate(fo, 1):
 
@@ -50,4 +49,3 @@ def load_glossary(filename):
         terms.append((lang, line, term, heads))
 
     fo.close()
-    return glossary

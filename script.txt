@@ -1,6 +1,0 @@
-0 blessed necklace
-1 환상의 쉬르노엔 가죽 각반
-en I want to buy {0:pl} and {1}.
-ko 나는 {0}들{_와} {1}{_을} 사고 싶습니다.
-ru Я продаю {0:pl:acc} и {1:acc}.
-

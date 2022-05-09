@@ -1,11 +1,12 @@
 from .constants import *
+from .utils import *
 
 class avm(): # attribute value matrix
 
     # attribute to value
     atov = {
         "cat": ["adj", "noun"],
-        "gend": ["m", "f", "n"],
+        "gend": ["m", "f", "n", "c"],
         "num": ["sg", "pl"],
         "case": ["nom", "acc", "gen", "dat", "inst", "prep"],
         "anim": ["anim"]
@@ -42,55 +43,79 @@ class avm(): # attribute value matrix
 
     def exist(self, feats):
         for a, v in self._iter(feats):
-            if hasattr(self, a) and getattr(self, a) != v:
+            if hasattr(self, a): # and getattr(self, a) != v:
                 return True
 
     def update(self, feats):
         for a, v in self._iter(feats):
             setattr(self, a, v)
 
+def _criterion(args):
+
+    query, fs, (pt, word) = args
+    fs = set(fs)
+
+    if hasattr(query, "gend") and "c" in fs:
+        fs.remove("c")
+        fs.add(query.gend)
+
+    a = fs.intersection(query.__dict__.values())
+    b = fs - a
+    c = pt.pattern if pt else word # TODO
+
+    return (-len(a), len(b), -len(c))
+
 def realize(parser, lemma, query):
 
     if parser.lang not in parser.lexicon:
-        return lemma, None
+        return lemma, avm()
     lexicon = parser.lexicon[parser.lang]
 
     cands = dict()
-    feats = [query]
+    queries = [query]
 
     for pt in lexicon[0]:
         if pt.search(lemma):
-            for fs, w in lexicon[0][pt].items():
-                cands[fs] = (pt, w)
+            for fs, word in lexicon[0][pt].items():
+                cands[fs] = (pt, word)
 
     if lemma in lexicon[1]:
-        for fs, w in lexicon[1][lemma].items():
-            if w:
-                cands[fs] = w
+        for fs, word in lexicon[1][lemma].items():
+
+            if word:
+                cands[fs] = (None, word)
                 continue
+
             fs = avm(fs)
             if fs.exist(query):
                 continue
             fs.update(query)
-            feats.append(fs)
+            queries.append(fs)
 
-    def _criterion(cand):
-        f1, f2, _ = cand
-        f2 = set(f2)
-        a = f2.intersection(f1.__dict__.values())
-        b = f2 - a
-        return (-len(a), len(b))
+    cands = sorted([
+        (query, fs, (pt, word))
+        for query in queries
+        for fs, (pt, word) in cands.items()
+    ], key = _criterion)
 
-    cands = [(a, b, c) for a in feats for b, c in cands.items() if not a.exist(b)]
-    cands = sorted(cands, key = _criterion)
+    if VERBOSE:
+        print("lemma =", lemma)
+        for i, args in enumerate(cands[:5]):
+            query, *cand = args
+            printl("cand[%d] =" % i, cand, end = ", ")
+            printl("query =", query, end = ", ")
+            printl("key =", _criterion(args))
+        printl()
+
+    feats = avm()
 
     if not cands:
-        return lemma, None
+        return lemma, feats
 
-    f1, f2, word = cands[0]
-    f1.update(f2)
+    f1, f2, (pt, word) = cands[0]
+    if pt:
+        word = pt.sub(word, lemma)
+    feats.update(f1)
+    feats.update(f2)
 
-    if type(word) == tuple:
-        word = word[0].sub(word[1], lemma)
-
-    return word, f1
+    return word, feats

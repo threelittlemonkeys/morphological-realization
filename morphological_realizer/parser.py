@@ -9,8 +9,14 @@ class parser():
 
     def __init__(self, lexicon, glossary):
         self.lang = None
-        self.lexicon = load_lexicon(lexicon)
-        self.glossary = load_glossary(glossary)
+        self.lexicon = dict()
+        self.glossary = dict()
+
+        for fn in lexicon:
+            load_lexicon(self.lexicon, fn)
+
+        for fn in glossary:
+            load_glossary(self.glossary, fn)
 
     def read(self, script):
         return load_script(script)
@@ -18,19 +24,30 @@ class parser():
     def parse_node(self, idx, tree, feats):
         e = tree[idx]
 
+        if e.state:
+            return
+        e.state = True
+
         if not e.feats:
 
             if e.head not in (-1, "*"): # if head exists
                 self.parse_node(e.head, tree, feats)
                 feats = tree[e.head].feats
+                if hasattr(feats, "cat"):
+                    delattr(feats, "cat")
 
-            e.form, e.feats = realize(self, e.form, feats)
+            if e.head != -1:
+                e.form, e.feats = realize(self, e.form, feats)
 
         if idx < len(tree) - 1:
             self.parse_node(idx + 1, tree, feats)
 
     def parse_term(self, idx, tree):
         e = tree[idx]
+
+        if e.state:
+            return
+        e.state = True
 
         if type(e.feats) != avm:
 
@@ -53,15 +70,14 @@ class parser():
 
             tree = list()
             for i, m in enumerate(re.finditer(RE_TERM, src)):
-                idx, head, feats = m.groups()
-                idx = int(idx)
+                term, head, feats = m.groups()
+                term = terms[int(term)] if term.isdecimal() else (*term.split(" "),)
                 head = int(head) if head else -1
-                lemma = self.glossary[terms[idx]][lang][1]
+                lemma = self.glossary[term][lang][1]
                 feats = feats[1:].split(":") if feats else None
                 tree.append(node(i, head, lemma, feats, m.span()))
-            self.parse_term(0, tree)
 
-            # term substitution
+            self.parse_term(0, tree)
 
             k = 0
             tgt = src
@@ -76,24 +92,23 @@ class parser():
             k = 0
             for m in re.finditer(RE_WORD, tgt):
                 i, j = m.start() + k, m.end() + k
-                word = m.group(1)
-                if i > 0 and word in ("와", "을"):
-                    word = realize_ko_morpheme(tgt[i - 1], word)
+                word = realize_ko_morpheme(tgt[i - 1], m.group(1))
                 tgt = tgt[:i] + word + tgt[j:]
                 k += len(word) - (j - i)
 
-            # results
-
-            printl("src =", src)
-            printl("tgt =", tgt)
-            printl("lang =", lang)
-            for i, term in enumerate(terms):
-                try:
-                    term = self.glossary[term][lang][0]
-                    printl("term[%d] =" % i, term)
-                except:
-                    pass
-            printl("tree =")
-            for e in tree:
-                printl(e)
-            printl()
+            if VERBOSE:
+                printl("src =", src)
+                printl("tgt =", tgt)
+                printl("lang =", lang)
+                for i, term in enumerate(terms):
+                    try:
+                        term = self.glossary[term][lang][0]
+                        printl("term[%d] =" % i, term)
+                    except:
+                        pass
+                printl("tree =")
+                for e in tree:
+                    printl(e)
+                input() # printl()
+            else:
+                print(src, tgt, sep = "\t")

@@ -1,9 +1,7 @@
 from .constants import *
 
-def load_lexicon(filename):
-
+def load_lexicon(lexicon, filename):
     fo = open(filename)
-    lexicon = dict()
 
     for ln, line in enumerate(fo, 1):
 
@@ -38,5 +36,11 @@ def load_lexicon(filename):
 
         lexicon[lang][idx][lemma][feats] = word
 
+    '''
+    for lang in lexicon:
+        for items in lexicon[lang]:
+            for lemma, words in items.items():
+                print(lang, lemma, words)
+    '''
+
     fo.close()
-    return lexicon
