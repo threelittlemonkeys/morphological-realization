@@ -1,4 +1,5 @@
 from .constants import *
+from .utils import *
 
 def load_lexicon(lexicon, filename):
     fo = open(filename)
@@ -20,16 +21,22 @@ def load_lexicon(lexicon, filename):
         idx = 1
         if lang[-1] == "*":
             idx = 0
-            lang = lang[:-1]
+        if lang[-1] == "!":
+            idx = 2
+        lang = lang if idx == 1 else lang[:-1]
 
         if lang not in lexicon:
-            lexicon[lang] = [dict(), dict()]
+            lexicon[lang] = [dict(), dict(), dict()]
 
-        if not idx:
+        if idx == 0:
             if lang == "ru":
                 lemma = re.sub("(?<!<)C(?!>)", "[бвгджзклмнпрстфхцчшщ]", lemma)
                 lemma = re.sub("(?<!<)V(?!>)", "[аеёийоуъыьэюя]", lemma)
             lemma = re.compile("^%s$" % lemma)
+
+        if idx == 2:
+            pt_a, pt_b = word.strip("/").split("/")
+            word = (re.compile(pt_a), pt_b)
 
         if lemma not in lexicon[lang][idx]:
             lexicon[lang][idx][lemma] = dict()
@@ -40,7 +47,7 @@ def load_lexicon(lexicon, filename):
     for lang in lexicon:
         for items in lexicon[lang]:
             for lemma, words in items.items():
-                print(lang, lemma, words)
+                printl(lang, lemma, words)
     '''
 
     fo.close()

@@ -41,14 +41,14 @@ class avm(): # attribute value matrix
             a = self.vtoa[v]
             yield a, v
 
-    def exist(self, feats):
-        for a, v in self._iter(feats):
-            if hasattr(self, a): # and getattr(self, a) != v:
-                return True
-
     def update(self, feats):
         for a, v in self._iter(feats):
             setattr(self, a, v)
+
+    def diff(self, feats):
+        for a, v in self._iter(feats):
+            if hasattr(self, a) and getattr(self, a) != v:
+                return True
 
 def _criterion(args):
 
@@ -87,7 +87,7 @@ def realize(parser, lemma, query):
                 continue
 
             fs = avm(fs)
-            if fs.exist(query):
+            if fs.diff(query):
                 continue
             fs.update(query)
             queries.append(fs)
@@ -99,12 +99,12 @@ def realize(parser, lemma, query):
     ], key = _criterion)
 
     if VERBOSE:
-        print("lemma =", lemma)
+        printl("lemma =", lemma)
         for i, args in enumerate(cands[:5]):
             query, *cand = args
             printl("cand[%d] =" % i, cand, end = ", ")
             printl("query =", query, end = ", ")
-            printl("key =", _criterion(args))
+            printl("score =", _criterion(args))
         printl()
 
     feats = avm()
@@ -117,5 +117,10 @@ def realize(parser, lemma, query):
         word = pt.sub(word, lemma)
     feats.update(f1)
     feats.update(f2)
+
+    if word != lemma and lemma in lexicon[2]:
+        for fs, (pt_a, pt_b) in lexicon[2][lemma].items():
+            if not feats.diff(fs):
+                word = pt_a.sub(pt_b, word)
 
     return word, feats

@@ -32,7 +32,7 @@ class parser():
 
             if e.head not in (-1, "*"): # if head exists
                 self.parse_node(e.head, tree, feats)
-                feats = tree[e.head].feats
+                feats = avm(tree[e.head].feats)
                 if hasattr(feats, "cat"):
                     delattr(feats, "cat")
 
@@ -111,4 +111,9 @@ class parser():
                     printl(e)
                 input() # printl()
             else:
-                print(src, tgt, sep = "\t")
+                # print(src, tgt, sep = "\t")
+                if not out:
+                    for e in tree[0].form:
+                        if e.head == "*":
+                            out.append(str(e.feats))
+                out.append(tgt)
