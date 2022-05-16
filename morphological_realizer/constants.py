@@ -1,7 +1,6 @@
 import re
 import sys
 
-VERBOSE = True
 LOG_FILE_STREAM = sys.stderr
 
 ERR_INVALID_SYNTAX = "invalid syntax at %s line %d"

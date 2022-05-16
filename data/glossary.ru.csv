@@ -1,70 +1,108 @@
-ru {:*_театр} # theatre
+en theatre
+ru {:*_театр}
 
-ru {:*_студент} # student
+en student
+ru {:*_студент}
 
-ru {:*_конец} # end
+en sword
+ru {:*_меч}
 
-ru {:*_купец} # merchant
+en swindler
+ru {:*_мошенник}
 
-ru {:*_клинок} # blade
+en end
+ru {:*_конец}
 
-ru {:*_жучок} # bug
+en merchant
+ru {:*_купец}
 
-ru {:*_никель} # nickel
+en blade
+ru {:*_клинок}
 
-ru {:*_клей} # glue
+en bug
+ru {:*_жучок}
 
-ru {:*_медведь} # bear
+en nickel
+ru {:*_никель}
 
-ru {:*_меч} # sword
+en bear
+ru {:*_медведь}
 
-ru {:*_сценарий} # scenario
+en scenario
+ru {:*_сценарий}
 
-ru {:*_змий} # serpent
+en dragon
+ru {:*_змий}
 
-ru {:*_слово} # word
+en word
+ru {:*_слово}
 
-ru {:*_окно} # window
+en window
+ru {:*_окно}
 
-ru {:*_пятно} # spot
+en spot
+ru {:*_пятно}
 
-ru {:*_море} # sea
+en sea
+ru {:*_море}
 
-ru {:*_привидение} # ghost
+en necklace
+ru {:*_ожерелье}
 
-ru {:*_ожерелье} # necklace
+en ghost
+ru {:*_привидение}
 
-ru {:*_жилище} # dwelling
+en dwelling
+ru {:*_жилище}
 
-ru {:*_чудовище} # monster
+en monster
+ru {:*_чудовище}
 
-ru {:*_комната} # room
+en room
+ru {:*_комната}
 
-ru {:*_Кетра} # Ketra
+en Ketra
+ru {:*_Кетра}
 
-ru {:*_свеча} # candle
+en candle
+ru {:*_свеча}
 
-ru {:*_Даша} # Dasha
+en Dasha
+ru {:*_Даша}
 
-ru {:*_овца} # sheep
+en idea
+ru {:*_идейка}
 
-ru {:*_курица} # chicken
+en duck
+ru {:*_утка}
 
-ru {:*_идейка} # idea
+en young woman
+ru {:*_девушка}
 
-ru {:*_утка} # duck
+en sheep
+ru {:*_овца}
 
-ru {:*_девушка} # young woman
+en chicken
+ru {:*_курица}
 
-ru {:*_песня} # song
+en song
+ru {:*_песня}
 
-ru {:*_боярышня} # hawthorn
+en hawthorn
+ru {:*_боярышня}
 
-ru {:*_магия} # magic
+en magic
+ru {:*_магия}
 
-ru {:*_Мария} # Maria
+en Maria
+ru {:*_Мария}
 
-ru {:*_честь} # honour
+en snake
+ru {:*_змея}
 
-ru {:*_лошадь} # horse
+en honour
+ru {:*_честь}
+
+en horse
+ru {:*_лошадь}
 

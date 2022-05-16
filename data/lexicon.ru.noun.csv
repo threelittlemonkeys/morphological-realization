@@ -15,8 +15,8 @@ ru* (.+) noun:m:pl:dat \1ам
 ru* (.+) noun:m:pl:inst \1ами
 ru* (.+) noun:m:pl:prep \1ах
 
-ru театр noun:m
-ru студент noun:m:anim
+ru театр noun:m # theatre
+ru студент noun:m:anim # student
 
 # NOUN: MASCULINE VELAR/SIBILANT STEM
 
@@ -25,8 +25,8 @@ ru* (.+[гкхжчшщ]) noun:m:pl:acc \1и
 ru* (.+[жчшщ]) noun:m:pl:acc:anim \1ей
 ru* (.+[жчшщ]) noun:m:pl:gen \1ей
 
-ru меч noun:m
-ru мошенник noun:m:anim
+ru меч noun:m # sword
+ru мошенник noun:m:anim # swindler
 
 # NOUN: MASCULINE Ц STEM
 
@@ -53,10 +53,10 @@ ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:dat \1\g<A>\g<B>ам
 ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:inst \1\g<A>\g<B>ами
 ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:prep \1\g<A>\g<B>ах
 
-ru конец noun:m
-ru купец noun:m:anim
-ru клинок noun:m
-ru жучок noun:m:anim
+ru конец noun:m # end
+ru купец noun:m:anim # merchant
+ru клинок noun:m # blade
+ru жучок noun:m:anim # bug
 
 # NOUN: MASCULINE SOFT/VOWEL STEM
 
@@ -78,10 +78,10 @@ ru* (.+)[ьй] noun:m:pl:dat \1ям
 ru* (.+)[ьй] noun:m:pl:inst \1ями
 ru* (.+)[ьй] noun:m:pl:prep \1ях
 
-ru никель noun:m
-ru медведь noun:m:anim
-ru сценарий noun:m
-ru змий noun:m:anim
+ru никель noun:m # nickel
+ru медведь noun:m:anim # bear
+ru сценарий noun:m # scenario
+ru змий noun:m:anim # dragon
 
 # NEUTER HARD STEM
 
@@ -100,15 +100,15 @@ ru* (.+)о noun:n:pl:dat \1ам
 ru* (.+)о noun:n:pl:inst \1ами
 ru* (.+)о noun:n:pl:prep \1ах
 
-ru слово noun:n
+ru слово noun:n # word
 
 # NOUN: NEUTER HARD STEM WITH DOUBLE CONSONANTS
 
 ru* (.+C)(C)о noun:n:pl:acc:anim \1о\2 # -о-, -е-
 ru* (.+C)(C)о noun:n:pl:gen \1о\2 # -о-, -е-
 
-ru окно noun:n
-ru пятно noun:n
+ru окно noun:n # window
+ru пятно noun:n # spot
 ru пятно noun:n:pl:gen пятен
 
 # NOUN: NEUTER SOFT STEM
@@ -128,15 +128,16 @@ ru* (.+)е noun:n:pl:dat \1ям
 ru* (.+)е noun:n:pl:inst \1ями
 ru* (.+)е noun:n:pl:prep \1ях
 
-ru море noun:n
+ru море noun:n # sea
 
 # NOUN: NEUTER VOWEL STEM
 
+ru* (.+)ие noun:n:sg:prep \1ии
 ru* (.+)[иь]е noun:n:pl:acc:anim \1ий
 ru* (.+)[иь]е noun:n:pl:gen \1ий
 
-ru ожерелье noun:n
-ru привидение noun:n
+ru ожерелье noun:n # necklace
+ru привидение noun:n # ghost
 
 # NOUN: NEUTER SIBILANT-STEM
 
@@ -151,8 +152,8 @@ ru* (.+[жчшщ])е noun:n:pl:dat \1ам
 ru* (.+[жчшщ])е noun:n:pl:inst \1ами
 ru* (.+[жчшщ])е noun:n:pl:prep \1ах
 
-ru жилище noun:n
-ru чудовище noun:n:anim
+ru жилище noun:n # dwelling
+ru чудовище noun:n:anim # monster
 
 # NOUN: FEMININE HARD STEM
 
@@ -171,8 +172,8 @@ ru* (.+)а noun:f:pl:dat \1ам
 ru* (.+)а noun:f:pl:inst \1ами
 ru* (.+)а noun:f:pl:prep \1ах
 
-ru комната noun:f
-ru Кетра noun:f:anim
+ru комната noun:f # room
+ru Кетра noun:f:anim # Ketra
 
 # NOUN: FEMININE VELAR/SIBILANT STEM
 
@@ -189,8 +190,8 @@ ru* (.+[гкхжчшщ])а noun:f:pl:dat \1ам
 ru* (.+[гкхжчшщ])а noun:f:pl:inst \1ами
 ru* (.+[гкхжчшщ])а noun:f:pl:prep \1ах
 
-ru свеча noun:f
-ru Даша noun:f:anim
+ru свеча noun:f # candle
+ru Даша noun:f:anim # Dasha
 
 # NOUN: FEMININE VELAR STEM WITH DOUBLE CONSONANTS
 
@@ -201,9 +202,9 @@ ru* (.+C)ка noun:f:pl:gen \1ок # [^жчшщ]
 ru* (.+[жчшщ])ка noun:f:pl:acc:anim \1ек
 ru* (.+[жчшщ])ка noun:f:pl:gen \1ек
 
-ru идейка noun:f
-ru утка noun:f:anim
-ru девушка noun:f:anim
+ru идейка noun:f # idea
+ru утка noun:f:anim # duck
+ru девушка noun:f:anim # young woman
 
 # NOUN: FEMININE Ц STEM
 
@@ -212,9 +213,9 @@ ru* (.+ц)а noun:f:sg:inst \1ей # unstressed
 ru* (.+C)ца noun:f:pl:acc:anim \1ец # -е-, -о-
 ru* (.+C)ца noun:f:pl:gen \1ец # -е-, -о-
 
-ru овца noun:f:anim
+ru овца noun:f:anim # sheep
 ru овца noun:f:anim:sg:inst овцой
-ru курица noun:f:anim
+ru курица noun:f:anim # chicken
 
 # NOUN: FEMININE SOFT STEM
 
@@ -250,9 +251,9 @@ ru* (.+и)я noun:f:sg:prep \1и
 ru* (.+[ие])я noun:f:pl:acc:anim \1й
 ru* (.+[ие])я noun:f:pl:gen \1й
 
-ru магия noun:f
-ru Мария noun:f:anim
-ru змея noun:f:anim
+ru магия noun:f # magic
+ru Мария noun:f:anim # Maria
+ru змея noun:f:anim # snake
 
 # NOUN: FEMININE Ь STEM
 
@@ -271,5 +272,5 @@ ru* (.+)ь noun:f:pl:dat \1ям
 ru* (.+)ь noun:f:pl:inst \1ями
 ru* (.+)ь noun:f:pl:prep \1ях
 
-ru честь noun:f
-ru лошадь noun:f:anim
+ru честь noun:f # honour
+ru лошадь noun:f:anim # horse

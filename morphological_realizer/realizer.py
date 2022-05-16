@@ -23,7 +23,7 @@ class avm(): # attribute value matrix
         self.update(feats)
 
     def __repr__(self):
-        return "{%s}" % ", ".join("%s: %s" % x for x in self.__dict__.items())
+        return "{%s}" % ", ".join(": ".join(x) for x in self.items())
 
     def _iter(self, feats):
 
@@ -31,7 +31,7 @@ class avm(): # attribute value matrix
             return
 
         if type(feats) == avm:
-            for a, v in feats.__dict__.items():
+            for a, v in feats.items():
                 yield a, v
             return
 
@@ -40,6 +40,14 @@ class avm(): # attribute value matrix
                 sys.exit(ERR_UNKNOWN_FEATURE % v)
             a = self.vtoa[v]
             yield a, v
+
+    def items(self):
+        for a in self.atov:
+            if hasattr(self, a):
+                yield (a, getattr(self, a))
+
+    def values(self):
+        return [v for a, v in self.items()]
 
     def update(self, feats):
         for a, v in self._iter(feats):
@@ -59,17 +67,19 @@ def _criterion(args):
         fs.remove("c")
         fs.add(query.gend)
 
-    a = fs.intersection(query.__dict__.values())
+    a = fs.intersection(query.values())
     b = fs - a
-    c = pt.pattern if pt else word # TODO
+    c = (pt != None)
+    d = pt.pattern if pt else word # TODO
 
-    return (-len(a), len(b), -len(c))
+    return (-len(a), len(b), c, -len(d))
 
 def realize(parser, lemma, query):
 
     if parser.lang not in parser.lexicon:
         return lemma, avm()
     lexicon = parser.lexicon[parser.lang]
+    verbose = parser.verbose
 
     cands = dict()
     queries = [query]
@@ -98,7 +108,7 @@ def realize(parser, lemma, query):
         for fs, (pt, word) in cands.items()
     ], key = _criterion)
 
-    if VERBOSE:
+    if verbose:
         printl("lemma =", lemma)
         for i, args in enumerate(cands[:5]):
             query, *cand = args

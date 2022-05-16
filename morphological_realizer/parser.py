@@ -7,10 +7,11 @@ from .utils import *
 
 class parser():
 
-    def __init__(self, lexicon, glossary):
+    def __init__(self, lexicon, glossary, verbose = False):
         self.lang = None
         self.lexicon = dict()
         self.glossary = dict()
+        self.verbose = verbose
 
         for fn in lexicon:
             load_lexicon(self.lexicon, fn)
@@ -96,7 +97,7 @@ class parser():
                 tgt = tgt[:i] + word + tgt[j:]
                 k += len(word) - (j - i)
 
-            if VERBOSE:
+            if self.verbose:
                 printl("src =", src)
                 printl("tgt =", tgt)
                 printl("lang =", lang)
@@ -110,10 +111,5 @@ class parser():
                 for e in tree:
                     printl(e)
                 input() # printl()
-            else:
-                # print(src, tgt, sep = "\t")
-                if not out:
-                    for e in tree[0].form:
-                        if e.head == "*":
-                            out.append(str(e.feats))
-                out.append(tgt)
+
+            yield src, tgt, tree

@@ -29,6 +29,8 @@ ru* (.+)[оы]й adj:c:pl:dat \1ым
 ru* (.+)[оы]й adj:c:pl:inst \1ыми
 ru* (.+)[оы]й adj:c:pl:prep \1ых
 
+# ADJECTIVE: VOWEL STEM
+
 ru* (.+ий) adj:m:sg:nom \1
 ru* (.+ий) adj:m:sg:acc \1
 ru* (.+)ий adj:m:sg:acc:anim \1его
@@ -57,3 +59,81 @@ ru* (.+)ий adj:c:pl:gen \1их
 ru* (.+)ий adj:c:pl:dat \1им
 ru* (.+)ий adj:c:pl:inst \1ими
 ru* (.+)ий adj:c:pl:prep \1их
+
+# ADJECTIVE: VELAR STEM
+
+ru* (.+[гкх][ио]й) adj:m:sg:nom \1
+ru* (.+[гкх][ио]й) adj:m:sg:acc \1
+ru* (.+[гкх])[ио]й adj:m:sg:acc:anim \1ого
+ru* (.+[гкх])[ио]й adj:m:sg:gen \1ого
+ru* (.+[гкх])[ио]й adj:m:sg:dat \1ому
+ru* (.+[гкх])[ио]й adj:m:sg:inst \1им
+ru* (.+[гкх])[ио]й adj:m:sg:prep \1ом
+ru* (.+[гкх])[ио]й adj:f:sg:nom \1ая
+ru* (.+[гкх])[ио]й adj:f:sg:acc \1ую
+ru* (.+[гкх])[ио]й adj:f:sg:acc:anim \1ую
+ru* (.+[гкх])[ио]й adj:f:sg:gen \1ой
+ru* (.+[гкх])[ио]й adj:f:sg:dat \1ой
+ru* (.+[гкх])[ио]й adj:f:sg:inst \1ой
+ru* (.+[гкх])[ио]й adj:f:sg:prep \1ой
+ru* (.+[гкх])[ио]й adj:n:sg:nom \1ое
+ru* (.+[гкх])[ио]й adj:n:sg:acc \1ое
+ru* (.+[гкх])[ио]й adj:n:sg:acc:anim \1ого
+ru* (.+[гкх])[ио]й adj:n:sg:gen \1ого
+ru* (.+[гкх])[ио]й adj:n:sg:dat \1ому
+ru* (.+[гкх])[ио]й adj:n:sg:inst \1им
+ru* (.+[гкх])[ио]й adj:n:sg:prep \1ом
+ru* (.+[гкх])[ио]й adj:c:pl:nom \1ие
+ru* (.+[гкх])[ио]й adj:c:pl:acc \1ие
+ru* (.+[гкх])[ио]й adj:c:pl:acc:anim \1их
+ru* (.+[гкх])[ио]й adj:c:pl:gen \1их
+ru* (.+[гкх])[ио]й adj:c:pl:dat \1им
+ru* (.+[гкх])[ио]й adj:c:pl:inst \1ими
+ru* (.+[гкх])[ио]й adj:c:pl:prep \1их
+
+# ADJECTIVE: SIBILANT STEM
+
+ru* (.+[жчшщ])ой adj:m:sg:inst \1им
+ru* (.+[жчшщ])ой adj:n:sg:inst \1им
+ru* (.+[жчшщ])ой adj:c:pl:nom \1ие
+ru* (.+[жчшщ])ой adj:c:pl:acc \1ие
+ru* (.+[жчшщ])ой adj:c:pl:acc:anim \1их
+ru* (.+[жчшщ])ой adj:c:pl:gen \1их
+ru* (.+[жчшщ])ой adj:c:pl:dat \1им
+ru* (.+[жчшщ])ой adj:c:pl:inst \1ими
+ru* (.+[жчшщ])ой adj:c:pl:prep \1их
+
+ru* (.+[жчшщ])ий adj:f:sg:nom \1ая
+ru* (.+[жчшщ])ий adj:f:sg:acc \1ую
+ru* (.+[жчшщ])ий adj:f:sg:acc:anim \1ую
+
+# ADJECTIVE: -ИН, -ЫН, -ОВ, -ЕВ STEM
+
+ru* (.+([иы]н|[ое]в)) adj:m:sg:nom \1
+ru* (.+([иы]н|[ое]в)) adj:m:sg:acc \1
+ru* (.+([иы]н|[ое]в)) adj:m:sg:acc:anim \1ого
+ru* (.+([иы]н|[ое]в)) adj:m:sg:gen \1ого
+ru* (.+([иы]н|[ое]в)) adj:m:sg:dat \1ому
+ru* (.+([иы]н|[ое]в)) adj:m:sg:inst \1ым
+ru* (.+([иы]н|[ое]в)) adj:m:sg:prep \1ом
+ru* (.+([иы]н|[ое]в)) adj:f:sg:nom \1а
+ru* (.+([иы]н|[ое]в)) adj:f:sg:acc \1у
+ru* (.+([иы]н|[ое]в)) adj:f:sg:acc:anim \1у
+ru* (.+([иы]н|[ое]в)) adj:f:sg:gen \1ой
+ru* (.+([иы]н|[ое]в)) adj:f:sg:dat \1ой
+ru* (.+([иы]н|[ое]в)) adj:f:sg:inst \1ой
+ru* (.+([иы]н|[ое]в)) adj:f:sg:prep \1ой
+ru* (.+([иы]н|[ое]в)) adj:n:sg:nom \1о
+ru* (.+([иы]н|[ое]в)) adj:n:sg:acc \1о
+ru* (.+([иы]н|[ое]в)) adj:n:sg:acc:anim \1ого
+ru* (.+([иы]н|[ое]в)) adj:n:sg:gen \1ого
+ru* (.+([иы]н|[ое]в)) adj:n:sg:dat \1ому
+ru* (.+([иы]н|[ое]в)) adj:n:sg:inst \1ым
+ru* (.+([иы]н|[ое]в)) adj:n:sg:prep \1ом
+ru* (.+([иы]н|[ое]в)) adj:c:pl:nom \1ы
+ru* (.+([иы]н|[ое]в)) adj:c:pl:acc \1ы
+ru* (.+([иы]н|[ое]в)) adj:c:pl:acc:anim \1ых
+ru* (.+([иы]н|[ое]в)) adj:c:pl:gen \1ых
+ru* (.+([иы]н|[ое]в)) adj:c:pl:dat \1ым
+ru* (.+([иы]н|[ое]в)) adj:c:pl:inst \1ыми
+ru* (.+([иы]н|[ое]в)) adj:c:pl:prep \1ых

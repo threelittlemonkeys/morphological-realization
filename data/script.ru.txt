@@ -1,16 +1,16 @@
 # MASCULINE NOUNS
 0 театр # theatre
 1 студент # student
-2 конец # end
-3 купец # merchant
-4 клинок # blade
-5 жучок # bug
-6 никель # nickel
-7 клей # glue
-8 медведь # bear
-9 меч # sword
+2 меч # sword
+3 мошенник # swindler
+4 конец # end
+5 купец # merchant
+6 клинок # blade
+7 жучок # bug
+8 никель # nickel
+9 медведь # bear
 10 сценарий # scenario
-11 змий # serpent
+11 змий # dragon
 ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
 ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
 ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
@@ -40,11 +40,11 @@ ru {11:pl:nom} {11:pl:acc} {11:pl:gen} {11:pl:dat} {11:pl:inst} {11:pl:prep}
 0 слово # word
 1 окно # window
 2 пятно # spot
-3 жилище # dwelling
-4 чудовище # monster
-5 море # sea
-6 привидение # ghost
-7 ожерелье # necklace
+3 море # sea
+4 ожерелье # necklace
+5 привидение # ghost
+6 жилище # dwelling
+7 чудовище # monster
 ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
 ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
 ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
@@ -67,17 +67,18 @@ ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
 1 Кетра # Ketra
 2 свеча # candle
 3 Даша # Dasha
-4 овца # sheep
-5 курица # chicken
-6 идейка # idea
-7 утка # duck
-8 девушка # young woman
+4 идейка # idea
+5 утка # duck
+6 девушка # young woman
+7 овца # sheep
+8 курица # chicken
 9 песня # song
 10 боярышня # hawthorn
 11 магия # magic
 12 Мария # Maria
-13 честь # honour
-14 лошадь # horse
+13 змея # snake
+14 честь # honour
+15 лошадь # horse
 ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
 ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
 ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
@@ -108,4 +109,6 @@ ru {13:sg:nom} {13:sg:acc} {13:sg:gen} {13:sg:dat} {13:sg:inst} {13:sg:prep}
 ru {13:pl:nom} {13:pl:acc} {13:pl:gen} {13:pl:dat} {13:pl:inst} {13:pl:prep}
 ru {14:sg:nom} {14:sg:acc} {14:sg:gen} {14:sg:dat} {14:sg:inst} {14:sg:prep}
 ru {14:pl:nom} {14:pl:acc} {14:pl:gen} {14:pl:dat} {14:pl:inst} {14:pl:prep}
+ru {15:sg:nom} {15:sg:acc} {15:sg:gen} {15:sg:dat} {15:sg:inst} {15:sg:prep}
+ru {15:pl:nom} {15:pl:acc} {15:pl:gen} {15:pl:dat} {15:pl:inst} {15:pl:prep}
 
