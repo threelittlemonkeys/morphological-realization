@@ -34,11 +34,10 @@ class parser():
             if e.head not in (-1, "*"): # if head exists
                 self.parse_node(e.head, tree, feats)
                 feats = avm(tree[e.head].feats)
-                if hasattr(feats, "cat"):
-                    delattr(feats, "cat")
 
             if e.head != -1:
-                e.form, e.feats = realize(self, e.form, feats)
+                is_head = (e.head == "*")
+                e.form, e.feats = realize(self, e.form, feats, is_head)
 
         if idx < len(tree) - 1:
             self.parse_node(idx + 1, tree, feats)

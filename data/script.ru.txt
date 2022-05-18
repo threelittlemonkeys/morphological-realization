@@ -7,10 +7,11 @@
 5 купец # merchant
 6 клинок # blade
 7 жучок # bug
-8 никель # nickel
-9 медведь # bear
-10 сценарий # scenario
-11 змий # dragon
+8 владелец # owner
+9 никель # nickel
+10 медведь # bear
+11 сценарий # scenario
+12 змий # dragon
 ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
 ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
 ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
@@ -35,6 +36,8 @@ ru {10:sg:nom} {10:sg:acc} {10:sg:gen} {10:sg:dat} {10:sg:inst} {10:sg:prep}
 ru {10:pl:nom} {10:pl:acc} {10:pl:gen} {10:pl:dat} {10:pl:inst} {10:pl:prep}
 ru {11:sg:nom} {11:sg:acc} {11:sg:gen} {11:sg:dat} {11:sg:inst} {11:sg:prep}
 ru {11:pl:nom} {11:pl:acc} {11:pl:gen} {11:pl:dat} {11:pl:inst} {11:pl:prep}
+ru {12:sg:nom} {12:sg:acc} {12:sg:gen} {12:sg:dat} {12:sg:inst} {12:sg:prep}
+ru {12:pl:nom} {12:pl:acc} {12:pl:gen} {12:pl:dat} {12:pl:inst} {12:pl:prep}
 
 # NEUTER NOUNS
 0 слово # word

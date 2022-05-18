@@ -5,11 +5,11 @@ class avm(): # attribute value matrix
 
     # attribute to value
     atov = {
-        "cat": ["adj", "noun"],
-        "gend": ["m", "f", "n", "c"],
-        "num": ["sg", "pl"],
-        "case": ["nom", "acc", "gen", "dat", "inst", "prep"],
-        "anim": ["anim"]
+        "cat": {"adj", "noun"},
+        "gend": {"m", "f", "n", "c"},
+        "num": {"sg", "pl"},
+        "case": {"nom", "acc", "gen", "dat", "inst", "prep"},
+        "anim": {"anim"}
     }
 
     # value to attribute
@@ -47,7 +47,9 @@ class avm(): # attribute value matrix
                 yield (a, getattr(self, a))
 
     def values(self):
-        return [v for a, v in self.items()]
+        for a in self.atov:
+            if hasattr(self, a):
+                yield getattr(self, a)
 
     def update(self, feats):
         for a, v in self._iter(feats):
@@ -58,23 +60,25 @@ class avm(): # attribute value matrix
             if hasattr(self, a) and getattr(self, a) != v:
                 return True
 
-def _criterion(args):
+def _criterion(args, is_head):
 
     query, fs, (pt, word) = args
-    fs = set(fs)
+    _fs = set(fs)
 
-    if hasattr(query, "gend") and "c" in fs:
-        fs.remove("c")
-        fs.add(query.gend)
+    if hasattr(query, "gend") and "c" in _fs:
+        _fs = _fs - {"c"} | {query.gend}
 
-    a = fs.intersection(query.values())
-    b = fs - a
-    c = (pt != None)
+    if not is_head and "noun" in _fs:
+        _fs = _fs - query.atov["gend"] | {query.gend}
+
+    a = _fs & set(query.values())
+    b = _fs - a
+    c = (pt == None)
     d = pt.pattern if pt else word # TODO
 
-    return (-len(a), len(b), c, -len(d))
+    return (-len(a), len(b), -c, -len(d))
 
-def realize(parser, lemma, query):
+def realize(parser, lemma, query, is_head = True):
 
     if parser.lang not in parser.lexicon:
         return lemma, avm()
@@ -83,6 +87,9 @@ def realize(parser, lemma, query):
 
     cands = dict()
     queries = [query]
+
+    if not is_head and hasattr(query, "cat"):
+        delattr(query, "cat")
 
     for pt in lexicon[0]:
         if pt.search(lemma):
@@ -106,7 +113,7 @@ def realize(parser, lemma, query):
         (query, fs, (pt, word))
         for query in queries
         for fs, (pt, word) in cands.items()
-    ], key = _criterion)
+    ], key = lambda x: _criterion(x, is_head))
 
     if verbose:
         printl("lemma =", lemma)
@@ -114,7 +121,7 @@ def realize(parser, lemma, query):
             query, *cand = args
             printl("cand[%d] =" % i, cand, end = ", ")
             printl("query =", query, end = ", ")
-            printl("score =", _criterion(args))
+            printl("criterion =", _criterion(args, is_head))
         printl()
 
     feats = avm()

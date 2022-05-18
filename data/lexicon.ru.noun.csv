@@ -38,25 +38,39 @@ ru мошенник noun:m:anim # swindler
 
 # NOUN: MASCULINE HARD STEM WITH VOWEL DELETIONS
 
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:acc:anim \1\g<A>\g<B>а
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:gen \1\g<A>\g<B>а
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:dat \1\g<A>\g<B>у
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:inst \1\g<A>\g<B>ом
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:sg:prep \1\g<A>\g<B>е
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:sg:acc:anim \1\g<A>\g<C>а
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:sg:gen \1\g<A>\g<C>а
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:sg:dat \1\g<A>\g<C>у
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:sg:inst \1\g<A>\g<C>ом
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:sg:prep \1\g<A>\g<C>е
 ru* (.+)ец noun:m:pl:nom \1цы
 ru* (.+)ец noun:m:pl:acc \1цы
 ru* (.+)ок noun:m:pl:nom \1ки
 ru* (.+)ок noun:m:pl:acc \1ки
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:acc:anim \1\g<A>\g<B>ов
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:gen \1\g<A>\g<B>ов
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:dat \1\g<A>\g<B>ам
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:inst \1\g<A>\g<B>ами
-ru* (.+)(е(?P<A>ц)|о(?P<B>к)) noun:m:pl:prep \1\g<A>\g<B>ах
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:pl:acc:anim \1\g<A>\g<C>ов
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:pl:gen \1\g<A>\g<C>ов
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:pl:dat \1\g<A>\g<C>ам
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:pl:inst \1\g<A>\g<C>ами
+ru* (.+)(е(?P<A>ц)|о(?P<C>к)) noun:m:pl:prep \1\g<A>\g<C>ах
+
+ru* (.+)лец noun:m:sg:acc:anim \1льца
+ru* (.+)лец noun:m:sg:gen \1льца
+ru* (.+)лец noun:m:sg:dat \1льцу
+ru* (.+)лец noun:m:sg:inst \1льцом
+ru* (.+)лец noun:m:sg:prep \1льце
+ru* (.+)лец noun:m:pl:nom \1льцы
+ru* (.+)лец noun:m:pl:acc \1льцы
+ru* (.+)лец noun:m:pl:acc:anim \1льцов
+ru* (.+)лец noun:m:pl:gen \1льцов
+ru* (.+)лец noun:m:pl:dat \1льцам
+ru* (.+)лец noun:m:pl:inst \1льцами
+ru* (.+)лец noun:m:pl:prep \1льцах
 
 ru конец noun:m # end
 ru купец noun:m:anim # merchant
 ru клинок noun:m # blade
 ru жучок noun:m:anim # bug
+ru владелец noun:m:anim # owner
 
 # NOUN: MASCULINE SOFT/VOWEL STEM
 
@@ -94,8 +108,8 @@ ru* (.+)о noun:n:sg:inst \1ом
 ru* (.+)о noun:n:sg:prep \1е
 ru* (.+)о noun:n:pl:nom \1а
 ru* (.+)о noun:n:pl:acc \1а
-ru* (.+(CV|VC))о noun:n:pl:acc:anim \1
-ru* (.+(CV|VC))о noun:n:pl:gen \1
+ru* (.+(CV|VC|ств))о noun:n:pl:acc:anim \1
+ru* (.+(CV|VC|ств))о noun:n:pl:gen \1
 ru* (.+)о noun:n:pl:dat \1ам
 ru* (.+)о noun:n:pl:inst \1ами
 ru* (.+)о noun:n:pl:prep \1ах
@@ -141,16 +155,16 @@ ru привидение noun:n # ghost
 
 # NOUN: NEUTER SIBILANT-STEM
 
-ru* (.+[жчшщ])е noun:n:sg:acc:anim \1а
-ru* (.+[жчшщ])е noun:n:sg:gen \1а
-ru* (.+[жчшщ])е noun:n:sg:dat \1у
-ru* (.+[жчшщ])е noun:n:pl:nom \1а
-ru* (.+[жчшщ])е noun:n:pl:acc \1а
-ru* (.+[жчшщ])е noun:n:pl:acc:anim \1
-ru* (.+[жчшщ])е noun:n:pl:gen \1
-ru* (.+[жчшщ])е noun:n:pl:dat \1ам
-ru* (.+[жчшщ])е noun:n:pl:inst \1ами
-ru* (.+[жчшщ])е noun:n:pl:prep \1ах
+ru* (.+[цжчшщ])е noun:n:sg:acc:anim \1а
+ru* (.+[цжчшщ])е noun:n:sg:gen \1а
+ru* (.+[цжчшщ])е noun:n:sg:dat \1у
+ru* (.+[цжчшщ])е noun:n:pl:nom \1а
+ru* (.+[цжчшщ])е noun:n:pl:acc \1а
+ru* (.+[цжчшщ])е noun:n:pl:acc:anim \1
+ru* (.+[цжчшщ])е noun:n:pl:gen \1
+ru* (.+[цжчшщ])е noun:n:pl:dat \1ам
+ru* (.+[цжчшщ])е noun:n:pl:inst \1ами
+ru* (.+[цжчшщ])е noun:n:pl:prep \1ах
 
 ru жилище noun:n # dwelling
 ru чудовище noun:n:anim # monster
@@ -271,6 +285,9 @@ ru* (.+)ь noun:f:pl:gen \1ей
 ru* (.+)ь noun:f:pl:dat \1ям
 ru* (.+)ь noun:f:pl:inst \1ями
 ru* (.+)ь noun:f:pl:prep \1ях
+ru* (.+[шщ])ь noun:f:pl:dat \1ам
+ru* (.+[шщ])ь noun:f:pl:inst \1ами
+ru* (.+[шщ])ь noun:f:pl:prep \1ах
 
 ru честь noun:f # honour
 ru лошадь noun:f:anim # horse

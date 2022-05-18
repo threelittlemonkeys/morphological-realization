@@ -41,5 +41,8 @@ if __name__ == "__main__":
 
             out += _out
 
+        if not flag:
+            input()
+
         if flag == "-t":
             print(*out, sep = "\t")
