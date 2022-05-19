@@ -73,7 +73,14 @@ class parser():
                 term, head, feats = m.groups()
                 term = terms[int(term)] if term.isdecimal() else (*term.split(" "),)
                 head = int(head) if head else -1
-                lemma = self.glossary[term][lang][1]
+
+                if term in self.glossary:
+                    lemma = self.glossary[term][lang][1]
+                elif len(term) == 1 and term[0] in self.lexicon[lang][1]:
+                    lemma = (("*", term[0]),)
+                else:
+                    sys.exit(ERR_LEMMA_NOT_FOUND % term)
+
                 feats = feats[1:].split(":") if feats else None
                 tree.append(node(i, head, lemma, feats, m.span()))
 
@@ -101,11 +108,9 @@ class parser():
                 printl("tgt =", tgt)
                 printl("lang =", lang)
                 for i, term in enumerate(terms):
-                    try:
+                    if term in self.glossary:
                         term = self.glossary[term][lang][0]
                         printl("term[%d] =" % i, term)
-                    except:
-                        pass
                 printl("tree =")
                 for e in tree:
                     printl(e)

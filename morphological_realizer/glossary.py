@@ -15,16 +15,16 @@ def load_glossary(glossary, filename):
 
         if line == "":
 
-            terms = {
+            _terms = {
                 lang: (line, tuple((heads[head], lemma) for head, lemma in term))
                 for lang, line, term, heads in terms
             }
 
             for key in keys:
-                glossary[key] = terms
+                glossary[key] = _terms
 
-            keys = list()
-            terms = list()
+            keys.clear()
+            terms.clear()
             continue
 
         key = list()

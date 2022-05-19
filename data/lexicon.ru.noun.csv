@@ -153,7 +153,7 @@ ru* (.+)[иь]е noun:n:pl:gen \1ий
 ru ожерелье noun:n # necklace
 ru привидение noun:n # ghost
 
-# NOUN: NEUTER SIBILANT-STEM
+# NOUN: NEUTER SIBILANT STEM
 
 ru* (.+[цжчшщ])е noun:n:sg:acc:anim \1а
 ru* (.+[цжчшщ])е noun:n:sg:gen \1а
