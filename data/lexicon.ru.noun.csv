@@ -242,11 +242,13 @@ ru* (.+)я noun:f:sg:inst \1ей
 ru* (.+)я noun:f:sg:prep \1е
 ru* (.+)я noun:f:pl:nom \1и
 ru* (.+)я noun:f:pl:acc \1и
-ru* (.+)я noun:f:pl:acc:anim \1ь
-ru* (.+)я noun:f:pl:gen \1ь
+ru* (.+)я noun:f:pl:acc:anim \1ей # ей, ь
+ru* (.+)я noun:f:pl:gen \1ей
 ru* (.+)я noun:f:pl:dat \1ям
 ru* (.+)я noun:f:pl:inst \1ями
 ru* (.+)я noun:f:pl:prep \1ях
+
+# ru noun:f
 
 # NOUN: FEMININE SOFT STEM WITH DOUBLE CONSONANTS
 

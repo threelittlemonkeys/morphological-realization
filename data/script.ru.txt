@@ -115,3 +115,32 @@ ru {14:pl:nom} {14:pl:acc} {14:pl:gen} {14:pl:dat} {14:pl:inst} {14:pl:prep}
 ru {15:sg:nom} {15:sg:acc} {15:sg:gen} {15:sg:dat} {15:sg:inst} {15:sg:prep}
 ru {15:pl:nom} {15:pl:acc} {15:pl:gen} {15:pl:dat} {15:pl:inst} {15:pl:prep}
 
+# ADJECTIVES
+0 красивый # pretty
+1 синий # blue
+2 другой # different
+3 тонкий # thin
+4 чужой # strange
+5 мамин # mother's
+6 птицын # bird's
+7 отцов # father's
+8 Игорев # Igor's
+ru {0:sg:nom} {0:sg:acc} {0:sg:gen} {0:sg:dat} {0:sg:inst} {0:sg:prep}
+ru {0:pl:nom} {0:pl:acc} {0:pl:gen} {0:pl:dat} {0:pl:inst} {0:pl:prep}
+ru {1:sg:nom} {1:sg:acc} {1:sg:gen} {1:sg:dat} {1:sg:inst} {1:sg:prep}
+ru {1:pl:nom} {1:pl:acc} {1:pl:gen} {1:pl:dat} {1:pl:inst} {1:pl:prep}
+ru {2:sg:nom} {2:sg:acc} {2:sg:gen} {2:sg:dat} {2:sg:inst} {2:sg:prep}
+ru {2:pl:nom} {2:pl:acc} {2:pl:gen} {2:pl:dat} {2:pl:inst} {2:pl:prep}
+ru {3:sg:nom} {3:sg:acc} {3:sg:gen} {3:sg:dat} {3:sg:inst} {3:sg:prep}
+ru {3:pl:nom} {3:pl:acc} {3:pl:gen} {3:pl:dat} {3:pl:inst} {3:pl:prep}
+ru {4:sg:nom} {4:sg:acc} {4:sg:gen} {4:sg:dat} {4:sg:inst} {4:sg:prep}
+ru {4:pl:nom} {4:pl:acc} {4:pl:gen} {4:pl:dat} {4:pl:inst} {4:pl:prep}
+ru {5:sg:nom} {5:sg:acc} {5:sg:gen} {5:sg:dat} {5:sg:inst} {5:sg:prep}
+ru {5:pl:nom} {5:pl:acc} {5:pl:gen} {5:pl:dat} {5:pl:inst} {5:pl:prep}
+ru {6:sg:nom} {6:sg:acc} {6:sg:gen} {6:sg:dat} {6:sg:inst} {6:sg:prep}
+ru {6:pl:nom} {6:pl:acc} {6:pl:gen} {6:pl:dat} {6:pl:inst} {6:pl:prep}
+ru {7:sg:nom} {7:sg:acc} {7:sg:gen} {7:sg:dat} {7:sg:inst} {7:sg:prep}
+ru {7:pl:nom} {7:pl:acc} {7:pl:gen} {7:pl:dat} {7:pl:inst} {7:pl:prep}
+ru {8:sg:nom} {8:sg:acc} {8:sg:gen} {8:sg:dat} {8:sg:inst} {8:sg:prep}
+ru {8:pl:nom} {8:pl:acc} {8:pl:gen} {8:pl:dat} {8:pl:inst} {8:pl:prep}
+
