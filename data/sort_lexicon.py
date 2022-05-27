@@ -12,7 +12,7 @@ def ftoi(fs, fmap): # feature to int
         return -1
 
 def _criterion(args):
-    lang, lemma, feats, word, _ = args
+    lang, lemma, feats, word = args
     feats = set(feats.split(":"))
 
     cat = ftoi(feats, cat_to_idx)
@@ -21,8 +21,6 @@ def _criterion(args):
     case = ftoi(feats, case_to_idx)
 
     return (lang[:2], lemma, cat, gend, num, case, len(feats))
-
-lines = list()
 
 cats = ("adj", "noun")
 gends = ("m", "f", "n", "c")
@@ -34,14 +32,22 @@ gend_to_idx = enum(gends)
 num_to_idx = enum(nums)
 case_to_idx = enum(cases)
 
+lines = dict()
+
 for line in sys.stdin:
     line = re.sub("\s+", " ", line).strip()
-    line, cmt = re.search("^([^#]*)(.*)", line).groups()
-    if not line:
+    args, cmt = re.search("^([^#]*)(.*)", line).groups()
+    if not args:
         continue
-    lang, lemma, feats, *word = line.split(" ")
-    word = word[0] if word else ""
-    lines.append((lang, lemma, feats, word, cmt))
+    args = args.split(" ")
+    if len(args) == 3:
+        args.append("")
+    args = tuple(args)
+    if args in lines:
+        print("<", (*args, lines[args]), file = sys.stderr)
+        print(">", (*args, cmt), file = sys.stderr)
+    lines[args] = cmt
 
-for line in sorted(lines, key = _criterion):
-    print(*[x for x in line if x])
+for args in sorted(lines, key = _criterion):
+    cmt = lines[args]
+    print(*args, cmt)
