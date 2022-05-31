@@ -257,8 +257,8 @@ ru* (.+C)(C)я noun:f:pl:gen \1е\2 # -е-, -о-
 
 ru песня noun:f
 ru боярышня noun:f:anim
-ru боярышня noun:f:pl:acc:anim боярышень
-ru боярышня noun:f:pl:gen боярышень
+ru боярышня noun:f:anim:pl:acc боярышень
+ru боярышня noun:f:anim:pl:gen боярышень
 
 # NOUN: FEMININE VOWEL STEM
 
